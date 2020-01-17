@@ -1,17 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlaineka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/16 12:23:03 by hlaineka          #+#    #+#             */
+/*   Updated: 2020/01/16 12:23:10 by hlaineka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int	selector(const char *command, va_list *source)
 {
 	char	specifier;
-	char	*printable;
 
 	specifier = command[ft_strlen(command) - 1];
 	if (specifier == 's')
-	{
-		printable = va_arg(*source, char*);
-		ft_putstr(printable);
-		return(ft_strlen(printable));
-	}
+		return(print_s(command, source));
+	/*if (specifier == 'c')
+		return(print_c(command, source));
+	if (specifier == 'p')
+		return(print_p(command, source));
+	if (specifier == 'd')
+		return(print_d(command, source));
+	if (specifier == 'i')
+		return(print_i(command, source));
+	if (specifier == 'o')
+		return(print_o(command, source));
+	if (specifier == 'u')
+		return(print_u(command, source));
+	if (specifier == 'x')
+		return(print_x(command, source));
+	if (specifier == 'X')
+		return(print_xx(command, source));
+		*/
 	return (0);
 }
 
@@ -43,7 +67,7 @@ static char	*ft_addchar(char *source, char c)
 
 	if (!source)
 	{
-		if ((returnable = (char*)malloc(sizeof(char) * (ft_strlen(source) + 2))))
+		if ((returnable = (char*)malloc(sizeof(char) * 2)))
 		{
 			returnable[0] = c;
 			returnable[1] = '\0';
