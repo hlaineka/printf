@@ -12,18 +12,18 @@
 
 #include "ft_printf.h"
 
-static int	selector(const char *command, va_list *source)
+static int	selector(t_tags *command, va_list *source)
 {
 	char	specifier;
 
-	specifier = command[ft_strlen(command) - 1];
+	specifier = command->specifier;
 	if (specifier == 's')
 		return(print_s(command, source));
-	/*if (specifier == 'c')
+	if (specifier == 'c')
 		return(print_c(command, source));
 	if (specifier == 'p')
 		return(print_p(command, source));
-	if (specifier == 'd')
+	/*if (specifier == 'd')
 		return(print_d(command, source));
 	if (specifier == 'i')
 		return(print_i(command, source));
@@ -39,7 +39,7 @@ static int	selector(const char *command, va_list *source)
 	return (0);
 }
 
-static int	is_type(char c, int i)
+static int	is_specifier(char c, int i)
 {
 	if (i == 1 && c == '%')
 		return (TRUE);
@@ -60,13 +60,14 @@ static int	is_type(char c, int i)
 		return (TRUE);
 	return (FALSE);
 }
-*/
-static char	*ft_addchar(char *source, char c)
+
+static char	*ft_addchar(char **source, char c)
 {
 	char	*returnable;
 
-	if (!source)
+	if (!*source)
 	{
+		//ft_putstr("inside first if\n");
 		if ((returnable = (char*)malloc(sizeof(char) * 2)))
 		{
 			returnable[0] = c;
@@ -75,14 +76,128 @@ static char	*ft_addchar(char *source, char c)
 		}
 		return (NULL);
 	}
-	if ((returnable = (char*)malloc(sizeof(char) * (ft_strlen(source) + 2))))
+	if ((returnable = (char*)malloc(sizeof(char) * (ft_strlen(*source) + 2))))
 	{
-		returnable = ft_strcpy(returnable, source);
-		returnable[ft_strlen(source)] = c;
-		returnable[ft_strlen(source + 1)] = '\0';
+		//ft_putstr("inside second if\n");
+		returnable = ft_strcpy(returnable, *source);
+		returnable[ft_strlen(*source)] = c;
+		returnable[ft_strlen(*source) + 1] = '\0';
 		return(returnable);
 	}
 	return(NULL);
+}
+*/
+static void	initialize_command(t_tags *command)
+{
+	command->specifier = '\0';
+	command->flag_zero = FALSE;;
+	command->flag_minus = FALSE;
+	command->flag_plus = FALSE;
+	command->flag_space = FALSE;
+	command->flag_hash = FALSE;
+	command->width = -1;
+	command->width_address = FALSE;
+	command->precision = -1;
+	command->precision_address = FALSE;
+	command->length = -1;
+	command->length_hh = FALSE;
+	command->length_h = FALSE;
+	command->length_l = FALSE;
+	command->length_ll = FALSE;
+	command->length_L = FALSE;
+}
+
+static void	set_flag(t_tags *command, char flag)
+{
+	if (flag == '0')
+		command->flag_zero = TRUE;
+	else if (flag == '-')
+		command->flag_minus = TRUE;
+	else if (flag == '+')
+		command->flag_plus = TRUE;
+	else if (flag == ' ')
+		command->flag_space = TRUE;
+	else if (flag == '#')
+		command->flag_hash = TRUE;
+	return;
+}
+
+static void	set_width(t_tags *command, char c)
+{
+	int		value;
+	char	character[2];
+
+	character[0] = c;
+	character[1] = '\0';
+	value = ft_atoi(character);
+	if (command->width == -1)
+		command->width = 0;
+	command->width = command->width * 10 + value;
+}
+
+static void	set_precision(t_tags *command, char c)
+{
+	int		value;
+	char	character[2];
+
+	if (c == '.')
+	{
+		command->precision = 0;
+		return;
+	}
+	character[0] = c;
+	character[1] = '\0';
+	value = ft_atoi(character);
+	if (command->precision == -1)
+		command->precision = 0;
+	command->precision = command->precision * 10 + value;
+}
+
+static void	set_length(t_tags *command, char c)
+{
+	if (c == 'h')
+		if (command->length_h)
+		{
+			command->length_hh = TRUE;
+			command->length_h = FALSE;
+		}
+		else
+			command->length_h = TRUE;
+	else if (c == 'l')
+		if (command->length_l)
+			{
+				command->length_ll = TRUE;
+				command->length_l = FALSE;
+			}
+			else
+				command->length_l = TRUE;
+	else
+		command->length_L = TRUE;
+}
+
+static int	check_command(const char *format, t_tags *command)
+{
+	int		w;
+
+	w = 1;
+	while (format[w] != '\0' && !is_specifier(format[w], w))
+	{
+		if (format[w] == '-' || format[w] == '+' || format[w] == ' ' || format[w] == '#' || format[w] == '0')
+			set_flag(command, format[w]);
+		else if (ft_isdigit(format[w]))
+			if (command->precision == -1)
+				set_width(command, format[w]);
+			else
+				set_precision(command, format[w]);
+		else if (format[w] == '.')
+			set_precision(command, format[w]);
+		else if (format[w] == 'h' || format[w] == 'l' || format[w] == 'L')
+			set_length(command, format[w]);
+		w++;
+	}
+	if (format[w] != '\0' && is_specifier(format[w], w))
+		command->specifier = format[w];
+	return(w);
 }
 
 int 		ft_printf(const char *format, ...)
@@ -90,39 +205,31 @@ int 		ft_printf(const char *format, ...)
 	va_list source;
 	int		i;
 	int		w;
-	char	*command;
+	t_tags	*command;
 	int		printed;
 
 	i = 0;
 	w = 0;
-	command = NULL;
+	command = (t_tags*)malloc(sizeof(t_tags));
+	initialize_command(command);
 	printed = 0;
 	va_start(source, format);
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			w = 1;
-			while (format[i + w] != '\0' && !is_type(format[i + w], w))
-			{
-				command = ft_addchar(command, format[i + w]);
-				w++;
-			}
-			if (format[i + w] != '\0' && is_type(format[i + w], w))
-				command = ft_addchar(command, format[i + w]);
+			w = check_command(&format[i], command);
 			i = i + w;
-			w = 0;
-			if (command)
-			{
-				printed = printed + selector(command, &source);
-				command = NULL;
-			}
+			printed = printed + selector(command, &source);
+			initialize_command(command);
 		}
 		else
+		{	
 			ft_putchar(format[i]);
+			printed++;
+		}
 		i++;
 	}
 	va_end(source);
-	printed = printed + i;
 	return(printed);
 }

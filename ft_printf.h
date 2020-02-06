@@ -19,15 +19,47 @@
 # include <stdarg.h>
 # include "libft/libft.h"
 
+/*
+** A struct to save all the data about a command
+*/
+typedef struct	s_tags
+{
+	char		specifier;
+	int			flag_zero;
+	int			flag_minus;
+	int			flag_plus;
+	int			flag_space;
+	int			flag_hash;
+	int			width;
+	int			width_address;
+	int			precision;
+	int			precision_address;
+	int			length;
+	int			length_hh;
+	int			length_h;
+	int			length_l;
+	int			length_ll;
+	int			length_L;
+}				t_tags;
+
 int 		ft_printf(const char *format, ...);
-int			print_s(const char *command, va_list *source);
-int			print_c(const char *command, va_list *source);
-int			print_p(const char *command, va_list *source);
-int			print_d(const char *command, va_list *source);
-int			print_i(const char *command, va_list *source);
-int			print_o(const char *command, va_list *source);
-int			print_u(const char *command, va_list *source);
-int			print_x(const char *command, va_list *source);
-int			print_xx(const char *command, va_list *source);
+/*
+** The fuctions called by selector on ft_printf, main functions
+** to handle different data types.
+*/
+int			print_s(t_tags *command, va_list *source);
+int			print_c(t_tags *command, va_list *source);
+int			print_p(t_tags *command, va_list *source);
+int			print_d(t_tags *command, va_list *source);
+int			print_i(t_tags *command, va_list *source);
+int			print_o(t_tags *command, va_list *source);
+int			print_u(t_tags *command, va_list *source);
+int			print_x(t_tags *command, va_list *source);
+int			print_xx(t_tags *command, va_list *source);
+
+/*
+** Helper functions for print_s
+*/
+
 
 #endif
