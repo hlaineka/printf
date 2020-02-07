@@ -10,4 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 
+int			print_x(t_tags *command, va_list *source)
+{
+	unsigned int	hexa;
+	char			*printable;
+	
+	hexa = va_arg(*source, unsigned int);
+	if (command->specifier == 'x')
+		printable = ft_itoa_base((long long int)hexa, 16, TRUE);
+	ft_putstr(printable);
+	return(ft_strlen(printable));
+}

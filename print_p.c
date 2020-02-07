@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-/*static char	*pointer_width(char *string, int width, t_tags *command)
+static char	*pointer_width(char *string, int width, t_tags *command)
 {
 	char	*returnable;
 	
@@ -30,41 +30,23 @@
 	return(returnable);
 }
 
-static char	*pointer_precision(char *string, int precision)
-{
-	char	*returnable;
-
-	if ((int)ft_strlen(string) > precision)
-	{
-		returnable = (char*)malloc(sizeof(char) * (precision + 1));
-		returnable = ft_strncpy(returnable, string, precision);
-	}
-	else
-		returnable = ft_strdup(string);
-	free(string);
-	return(returnable);
-	
-}
-
 static char *pointer_editor(char *printable, t_tags *command)
 {
 	if (command->width != -1)
 		printable = pointer_width(printable, command->width, command);
-	if (command->precision != -1)
-		printable = pointer_precision(printable, command->precision);
 	return(printable);
 }
-*/
+
 int			print_p(t_tags *command, va_list *source)
 {
 	void	*pointer;
 	char	*printable;
 	
 	pointer = (void*)malloc(sizeof(void*));
-	if (command->specifier == 'p')
-		pointer = va_arg(*source, void*);
-	printable = ft_itoa_base((long long int)(pointer), 16);
+	pointer = va_arg(*source, void*);
+	printable = ft_itoa_base((long long int)(pointer), 16, TRUE);
 	printable = ft_strjoin("0x", printable);
+	printable = pointer_editor(printable, command);
 	ft_putstr(printable);
 	return(ft_strlen(printable));
 }

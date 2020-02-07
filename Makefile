@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 
-SRCS = ft_printf.c print_s.c print_c.c print_p.c
+SRCS = ft_printf.c print_s.c print_c.c print_p.c print_x.c print_xx.c
 
 OBJ = $(SRCS:.c=.o)
 
@@ -56,8 +56,13 @@ $(NAME):
 	gcc -c -Wall -Wextra -Werror $(SRCS) $(LIBFT_SRCS) ft_printf.h libft/libft.h
 	ar rc $(NAME) $(OBJ) $(LIBFT_OBJ)
 
-main: all
-	gcc  -Wall -Wextra -Werror main.c -o ft_printf libftprintf.a
+main_string: re
+	gcc main.c -o string libftprintf.a
+	make clean
+
+main_hex: re
+	gcc main_hex.c -o hex libftprintf.a
+	make clean
 
 clean:
 	cd libft && make clean

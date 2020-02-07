@@ -12,43 +12,53 @@
 
 #include "ft_printf.h"
 
-static char	*char_width(char *string, int width, t_tags *command)
+static int	char_width(char printable, t_tags *command)
 {
-	char	*returnable;
-	
-	if ((int)ft_strlen(string) < width)
+	int		width;
+
+	width = command->width;
+	if(command->flag_minus)
 	{
-		returnable = ft_strset(' ', width);
-		if(command->flag_minus)
-			ft_strpaste(returnable, string);
-		else
-			ft_strpaste(&returnable[width - ft_strlen(string)], string);
+		ft_putchar(printable);
+		width--;
+		while(width > 0)
+		{
+			ft_putchar(' ');
+			width--;
+		}
 	}
 	else
-		returnable = ft_strdup(string);
-	free(string);
-	return(returnable);
+	{
+		while(width > 1)
+		{
+			ft_putchar(' ');
+			width--;
+		}
+		ft_putchar(printable);
+	}
+	return(command->width);
 }
 
-static char *char_editor(char *printable, t_tags *command)
+static int	char_editor(char printable, t_tags *command)
 {
 	if (command->width != -1)
-		printable = char_width(printable, command->width, command);
-	return(printable);
+		return(char_width(printable, command));
+	else
+	{
+		ft_putchar(printable);
+		return(1);
+	}
 }
 
 int			print_c(t_tags *command, va_list *source)
 {
-	char	*printable;
 	char	aquired;
-	int		returnable;
+	int 	returnable;
 	
-	returnable = 0;
-	aquired = (char)va_arg(*source, int);
-	printable = ft_strnew(1);
-	printable[0] = aquired;
-	printable = char_editor(printable, command);
-	ft_putstr(printable);
-	returnable = returnable + ft_strlen(printable);
-	return(ft_strlen(printable));
+	if (command->specifier == '%')
+		aquired = '%';
+	else
+		aquired = (char)va_arg(*source, int);
+	returnable = char_editor(aquired, command);
+	return(returnable);
 }

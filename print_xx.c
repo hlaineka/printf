@@ -10,4 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 
+int			print_xx(t_tags *command, va_list *source)
+{
+	void	*pointer;
+	char	*printable;
+	
+	pointer = (void*)malloc(sizeof(void*));
+	if (command->specifier == 'p')
+		pointer = va_arg(*source, void*);
+	printable = ft_itoa_base((long long int)(pointer), 16, FALSE);
+	printable = ft_strjoin("0x", printable);
+	ft_putstr(printable);
+	return(ft_strlen(printable));
+}

@@ -19,10 +19,14 @@ static int	selector(t_tags *command, va_list *source)
 	specifier = command->specifier;
 	if (specifier == 's')
 		return(print_s(command, source));
-	if (specifier == 'c')
+	if (specifier == 'c' || specifier == '%')
 		return(print_c(command, source));
 	if (specifier == 'p')
 		return(print_p(command, source));
+	if (specifier == 'x')
+		return(print_x(command, source));
+	if (specifier == 'X')
+		return(print_xx(command, source));
 	/*if (specifier == 'd')
 		return(print_d(command, source));
 	if (specifier == 'i')
@@ -31,21 +35,15 @@ static int	selector(t_tags *command, va_list *source)
 		return(print_o(command, source));
 	if (specifier == 'u')
 		return(print_u(command, source));
-	if (specifier == 'x')
-		return(print_x(command, source));
-	if (specifier == 'X')
-		return(print_xx(command, source));
 		*/
 	return (0);
 }
 
-static int	is_specifier(char c, int i)
+static int	is_specifier(char c)
 {
-	if (i == 1 && c == '%')
-		return (TRUE);
 	if (c == 's' || c == 'c' || c == 'p' || c == 'd'
 	|| c == 'i' || c == 'o' || c == 'u' || c == 'x'
-	|| c == 'X')
+	|| c == 'X' || c == '%')
 		return (TRUE);
 	return (FALSE);
 }
@@ -180,9 +178,10 @@ static int	check_command(const char *format, t_tags *command)
 	int		w;
 
 	w = 1;
-	while (format[w] != '\0' && !is_specifier(format[w], w))
+	while (format[w] != '\0' && !is_specifier(format[w]))
 	{
-		if (format[w] == '-' || format[w] == '+' || format[w] == ' ' || format[w] == '#' || format[w] == '0')
+		if (format[w] == '-' || format[w] == '+' || format[w] == ' ' || format[w] == '#' ||
+			(format[w - 1] == '%' && format[w] == '0'))
 			set_flag(command, format[w]);
 		else if (ft_isdigit(format[w]))
 			if (command->precision == -1)
@@ -195,7 +194,7 @@ static int	check_command(const char *format, t_tags *command)
 			set_length(command, format[w]);
 		w++;
 	}
-	if (format[w] != '\0' && is_specifier(format[w], w))
+	if (format[w] != '\0' && is_specifier(format[w]))
 		command->specifier = format[w];
 	return(w);
 }

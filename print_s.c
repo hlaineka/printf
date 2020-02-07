@@ -48,10 +48,10 @@ static char	*string_precision(char *string, int precision)
 
 static char *string_editor(char *printable, t_tags *command)
 {
-	if (command->width != -1)
-		printable = string_width(printable, command->width, command);
 	if (command->precision != -1)
 		printable = string_precision(printable, command->precision);
+	if (command->width != -1)
+		printable = string_width(printable, command->width, command);
 	return(printable);
 }
 
@@ -61,8 +61,13 @@ int			print_s(t_tags *command, va_list *source)
 	char	*aquired;
 
 	aquired = va_arg(*source, char*);
-	printable = ft_strdup(aquired);
-	printable = string_editor(printable, command);
-	ft_putstr(printable);
-	return(ft_strlen(printable));
+	if (aquired == NULL)
+	{
+		ft_putstr("(null)");
+		return(6);
+	}
+		printable = ft_strdup(aquired);
+		printable = string_editor(printable, command);
+		ft_putstr(printable);
+		return(ft_strlen(printable));
 }
