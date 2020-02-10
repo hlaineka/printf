@@ -23,10 +23,8 @@ static int	selector(t_tags *command, va_list *source)
 		return(print_c(command, source));
 	if (specifier == 'p')
 		return(print_p(command, source));
-	if (specifier == 'x')
+	if (specifier == 'x' || specifier == 'X')
 		return(print_x(command, source));
-	if (specifier == 'X')
-		return(print_xx(command, source));
 	/*if (specifier == 'd')
 		return(print_d(command, source));
 	if (specifier == 'i')

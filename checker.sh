@@ -1,12 +1,11 @@
-make main_string
-./string asdfasdf > string.txt
-while read -r line1 && read -r line2; do
-	if echo "$first" && echo "$second" | uniq; then
-		echo "match"
-	else
-		echo "not match"
-	fi
-	first=second
-done < string.txt
+make main_string > bin.txt
+./stringft asdfasdf > stringft.txt
+./stringpf asdfasdf > stringpf.txt
+diff -a stringpf.txt stringft.txt
 echo "string and char checked! Press enter to check pointers:"
-
+read text
+make main_hex > bin.txt
+./hexft asdfasdf > hexft.txt
+./hexpf asdfasdf > hexpf.txt
+diff -a hexpf.txt hexft.txt
+echo "pointers, hexas and octas checked!"

@@ -18,31 +18,31 @@ int		main(int argc, char **argv)
 	c = 'c';
 	if (argc == 2)
 	{
-		pf = printf("%%\n");
+		//pf = printf("%%\n");
 		ft = ft_printf("%%\n");
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%5%\n");
+		//pf = printf("%5%\n");
 		ft = ft_printf("%5%\n");
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 		
-		pf = printf("%-5%\n");
+		//pf = printf("%-5%\n");
 		ft = ft_printf("%-5%\n");
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%.0%\n");
+		//pf = printf("%.0%\n");
 		ft = ft_printf("%.0%\n");
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
@@ -54,108 +54,108 @@ int		main(int argc, char **argv)
 		//ft_printf("%   %", "test");
 		//ft_putchar('\n');
 
-		pf = printf("%s \n", argv[1]);
+		//pf = printf("%s \n", argv[1]);
 		ft = ft_printf("%s \n", argv[1]);
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 		
-		pf = printf("String %s \n", test);
+		//pf = printf("String %s \n", test);
 		ft = ft_printf("String %s \n", test);
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%-5s %-5s \n", test, test2);
+		//pf = printf("%-5s %-5s \n", test, test2);
 		ft = ft_printf("%-5s %-5s \n", test, test2);
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%5s %5s \n", test, test2);
+		//pf = printf("%5s %5s \n", test, test2);
 		ft = ft_printf("%5s %5s \n", test, test2);
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%.1s %.1s \n", test, test2);
+		//pf = printf("%.1s %.1s \n", test, test2);
 		ft = ft_printf("%.1s %.1s \n", test, test2);
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%.0s %.0s \n", test, test2);
+		//pf = printf("%.0s %.0s \n", test, test2);
 		ft = ft_printf("%.0s %.0s \n", test, test2);
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%10s is a string\n", "this");
+		//pf = printf("%10s is a string\n", "this");
 		ft = ft_printf("%10s is a string\n", "this");
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%5.2s is a string\n", "this");
+		//pf = printf("%5.2s is a string\n", "this");
 		ft = ft_printf("%5.2s is a string\n", "this");
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%10s is a string\n", "");
+		//pf = printf("%10s is a string\n", "");
 		ft = ft_printf("%10s is a string\n", "");
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%5.2s is a string\n", "");
+		//pf = printf("%5.2s is a string\n", "");
 		ft = ft_printf("%5.2s is a string\n", "");
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%-10s is a string\n", "this");
+		//pf = printf("%-10s is a string\n", "this");
 		ft = ft_printf("%-10s is a string\n", "this");
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%-5.2s is a string\n", "this");
+		//pf = printf("%-5.2s is a string\n", "this");
 		ft = ft_printf("%-5.2s is a string\n", "this");
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%-10s is a string\n", "");
+		//pf = printf("%-10s is a string\n", "");
 		ft = ft_printf("%-10s is a string\n", "");
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%-5.2s is a string\n", "");
+		//pf = printf("%-5.2s is a string\n", "");
 		ft = ft_printf("%-5.2s is a string\n", "");
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%s\n", NULL);
+		//pf = printf("%s\n", NULL);
 		ft = ft_printf("%s\n", NULL);
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
@@ -163,38 +163,38 @@ int		main(int argc, char **argv)
 		//ft_printf("%.2c\n", NULL);
 		//ft_putchar('\n');
 
-		pf = printf("%c, %c\n", c, c);
+		//pf = printf("%c, %c\n", c, c);
 		ft = ft_printf("%c, %c\n", c, c);
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%5c, %5c\n", c, c);
+		//pf = printf("%5c, %5c\n", c, c);
 		ft = ft_printf("%5c, %5c\n", c, c);
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');		
 
-		pf = printf("test: %c\n", 0);
+		//pf = printf("test: %c\n", 0);
 		ft = ft_printf("test: %c\n", 0);
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("%2c\n", 0);
+		//pf = printf("%2c\n", 0);
 		ft = ft_printf("%2c\n", 0);
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		pf = printf("null %c and text\n", 0);
+		//pf = printf("null %c and text\n", 0);
 		ft = ft_printf("null %c and text\n", 0);
-		ft_putnbr(pf);
-		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
