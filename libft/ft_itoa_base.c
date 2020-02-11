@@ -1,7 +1,7 @@
 #include "libft.h"
 
 /*
-** turns intiger value to char, using the base given.*
+** turns intiger value to char, using the base given.
 */
 
 char		*ft_itoa_base(long long int n, int base, int x)

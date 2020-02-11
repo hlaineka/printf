@@ -23,22 +23,13 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		pf = printf("%p, %p\n", test3, test4);
-		//ft = ft_printf("%p, %p\n", test3, test4);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		pf = printf("%30p, %p\n", test3, test4);
-		//ft = ft_printf("%30p, %p\n", test3, test4);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		pf = printf("%-30p, %p\n", test3, test4);
-		//ft = ft_printf("%-30p, %p\n", test3, test4);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		//pf = printf("%.5p, %p\n", test, test2);
 		//ft = ft_printf("%.5p, %p\n", test, test2);
@@ -49,34 +40,19 @@ int		main(int argc, char **argv)
 
 		//x
 		pf = printf("%x, %x\n", test, test2);
-		//ft = ft_printf("%x, %x\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		pf = printf("%30x, %30x\n", test, test2);
-		//ft = ft_printf("%30x, %30x\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		pf = printf("%-30x, %-30x\n", test, test2);
-		//ft = ft_printf("%-30x, %-30x\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		pf = printf("%.7x, %.7x\n", test, test2);
-		//ft = ft_printf("%.7x, %.7x\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		pf = printf("%.3x, %.3x\n", test, test2);
-		//ft = ft_printf("%.3x, %.3x\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		/*pf = printf("%+8x, %+8x\n", test, test2);
 		ft = ft_printf("%+8x, %+8x\n", test, test2);
@@ -93,47 +69,59 @@ int		main(int argc, char **argv)
 		ft_putchar('\n');*/
 
 		pf = printf("%#x, %#x\n", test, test2);
-		//ft = ft_printf("%#x, %#x\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		pf = printf("%#8x, %#8x\n", test, test2);
-		//ft = ft_printf("%#8x, %#8x\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
+
+		pf = printf("%x", -42);
+		printf("%i\n", pf);
+
+		pf = printf("%lx", 4294967296);
+		printf("%i\n", pf);
+
+		pf = printf("%llx", 9223372036854775807);
+		printf("%i\n", pf);
+
+		pf = printf("%llx", 9223372036854775808);
+		printf("%i\n", pf);
+
+		pf = printf("%010x", 542);
+		printf("%i\n", pf);
+
+		pf = printf("%#llx", 9223372036854775807);
+		printf("%i\n", pf);
+
+		pf = printf("%#x", 0);
+		printf("%i\n", pf);
+
+		pf = printf("%#08x", 42);
+		printf("%i\n", pf);
+
+		pf = printf("%#.x %#.0x", 0, 0);
+		printf("%i\n", pf);
+
+		pf = printf("%.x %.0x", 0, 0);
+		printf("%i\n", pf);
+
+		pf = printf("%5.x %5.0x", 0, 0);
+		printf("%i\n", pf);
 
 		//X
 		pf = printf("%X, %X\n", test, test2);
-		//ft = ft_printf("%X, %X\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		pf = printf("%30X, %30X\n", test, test2);
-		//ft = ft_printf("%30X, %30X\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		pf = printf("%-30X, %-30X\n", test, test2);
-		//ft = ft_printf("%-30X, %-30X\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		pf = printf("%.7X, %.7X\n", test, test2);
-		//ft = ft_printf("%.7X, %.7X\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		pf = printf("%.3X, %.3X\n", test, test2);
-		//ft = ft_printf("%.3X, %.3X\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		/*pf = printf("%+8x, %+8x\n", test, test2);
 		ft = ft_printf("%+8x, %+8x\n", test, test2);
@@ -150,16 +138,43 @@ int		main(int argc, char **argv)
 		ft_putchar('\n');*/
 
 		pf = printf("%#X, %#X\n", test, test2);
-		//ft = ft_printf("%#X, %#X\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
 
 		pf = printf("%#8X, %#8X\n", test, test2);
-		//ft = ft_printf("%#8X, %#8X\n", test, test2);
 		printf("%i\n", pf);
-		//ft_putnbr(ft);
-		//ft_putchar('\n');
+
+		pf = printf("%X", -42);
+		printf("%i\n", pf);
+
+		pf = printf("%lX", 4294967296);
+		printf("%i\n", pf);
+
+		pf = printf("%llX", 9223372036854775807);
+		printf("%i\n", pf);
+
+		pf = printf("%llX", 9223372036854775808);
+		printf("%i\n", pf);
+
+		pf = printf("%010X", 542);
+		printf("%i\n", pf);
+
+		pf = printf("%#llX", 9223372036854775807);
+		printf("%i\n", pf);
+
+		pf = printf("%#X", 0);
+		printf("%i\n", pf);
+
+		pf = printf("%#08X", 42);
+		printf("%i\n", pf);
+
+		pf = printf("%#.X %#.0X", 0, 0);
+		printf("%i\n", pf);
+
+		pf = printf("%.X %.0X", 0, 0);
+		printf("%i\n", pf);
+
+		pf = printf("%5.X %5.0X", 0, 0);
+		printf("%i\n", pf);
 	}
 	return(1);
 }
