@@ -108,7 +108,10 @@ char				*ft_str_realloc(char *src, int start, int end);
 char				*ft_strset(char value, size_t num);
 void				ft_strpaste(char *dest, char *src);
 int					ft_define_base_length(long long int n, int base);
-char				*ft_itoa_base(long long int n, int base, int x);
-char				*ft_itoa_hexa(long long int n);
+char				*ft_itoa_base(long long int n, int base);
+char				*ft_itoa_hexa(int n);
+char				*ft_strjoin_frees2(char *s1, char *s2);
+void				ft_strpaste_digits(char *dest, char *src);
+char				*ft_char_str_join(char c, char *s1);
 
 #endif

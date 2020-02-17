@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 
-SRCS = ft_printf.c print_s.c print_c.c print_p.c print_x.c
+SRCS = ft_printf.c print_s.c print_c.c print_p.c print_x.c print_d.c
 
 OBJ = $(SRCS:.c=.o)
 
@@ -33,7 +33,8 @@ libft/ft_strjoin.c libft/ft_strtrim.c libft/ft_strsplit.c libft/ft_addstr.c \
 libft/ft_lstnew.c libft/ft_lstdelone.c libft/ft_lstdel.c libft/ft_lstadd.c \
 libft/ft_lstiter.c libft/ft_lstmap.c libft/ft_strpaste.c libft/ft_strset.c \
 libft/ft_itoa_base.c libft/ft_define_base_length.c libft/get_next_line.c \
-libft/ft_str_realloc.c libft/ft_dynamic_string.c libft/ft_itoa_hexa.c
+libft/ft_str_realloc.c libft/ft_dynamic_string.c libft/ft_itoa_hexa.c \
+libft/ft_strjoin_frees2.c libft/ft_strpaste_digits.c libft/ft_char_str_join.c
 
 LIBFT_OBJ = ft_itoa.o ft_putchar.o ft_putchar_fd.o ft_putendl.o ft_putendl_fd.o \
 ft_putnbr.o ft_putnbr_fd.o ft_putstr.o ft_putstr_fd.o ft_strcpy.o ft_strdup.o \
@@ -46,7 +47,8 @@ ft_strclr.o ft_striter.o ft_striteri.o ft_strmap.o ft_strmapi.o ft_is_whitespace
 ft_define_length.o ft_strequ.o ft_strnequ.o ft_strsub.o ft_strjoin.o ft_strtrim.o \
 ft_strsplit.o ft_addstr.o ft_lstnew.o ft_lstdelone.o ft_lstdel.o ft_lstadd.o \
 ft_lstiter.o ft_lstmap.o ft_strpaste.o ft_strset.o ft_itoa_base.o ft_define_base_length.o \
-get_next_line.o ft_str_realloc.o ft_dynamic_string.o ft_itoa_hexa.o
+get_next_line.o ft_str_realloc.o ft_dynamic_string.o ft_itoa_hexa.o ft_strjoin_frees2.o \
+ft_strpaste_digits.o ft_char_str_join.o
 
 INC = ft_printf.h
 
@@ -58,6 +60,10 @@ $(NAME):
 	gcc -c -Wall -Wextra -Werror $(SRCS) $(LIBFT_SRCS) ft_printf.h libft/libft.h
 	ar rc $(NAME) $(OBJ) $(LIBFT_OBJ)
 
+main: re
+	gcc main.c -o test libftprintf.a
+	make clean
+
 main_string: re
 	gcc mainft.c -o stringft libftprintf.a
 	gcc mainpf.c -o stringpf libftprintf.a
@@ -66,6 +72,11 @@ main_string: re
 main_hex: re
 	gcc main_hexft.c -o hexft libftprintf.a
 	gcc main_hexpf.c -o hexpf libftprintf.a
+	make clean
+
+main_int: re
+	gcc main_intft.c -o intft libftprintf.a
+	gcc main_intpf.c -o intpf libftprintf.a
 	make clean
 
 compare:

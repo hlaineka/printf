@@ -4,7 +4,7 @@
 ** turns intiger value to char, using the base given.
 */
 
-char		*ft_itoa_base(long long int n, int base, int x)
+char		*ft_itoa_base(long long int n, int base)
 {
 	static char		*str;
 	int				w;
@@ -22,10 +22,8 @@ char		*ft_itoa_base(long long int n, int base, int x)
 		{
 			if (n % base <= 9)
 				str[w--] = ((n % base) + '0');
-			else if (x)
-				str[w--] = ((n % base) - 10 + 'a');
 			else
-				str[w--] = ((n % base) - 10 + 'A');
+				str[w--] = ((n % base) - 10 + 'a');
 			n = n / base;
 		}
 		str[w] = n + '0';

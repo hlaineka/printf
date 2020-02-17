@@ -1,3 +1,5 @@
+#include "libft.h"
+
 /*
 ** pastes the string in src to the beginning of the dest. Does not add \0
 */

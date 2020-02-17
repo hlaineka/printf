@@ -84,47 +84,47 @@ int		main(int argc, char **argv)
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%x", -42);
+		ft = ft_printf("%x\n", -42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%lx", 4294967296);
+		ft = ft_printf("%lx\n", 4294967296);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%llx", 9223372036854775807);
+		ft = ft_printf("%llx\n", 9223372036854775807);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%llx", 9223372036854775808);
+		ft = ft_printf("%llx\n", 9223372036854775808);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%010x", 542);
+		ft = ft_printf("%010x\n", 542);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%#llx", 9223372036854775807);
+		ft = ft_printf("%#llx\n", 9223372036854775807);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%#x", 0);
+		ft = ft_printf("%#x\n", 0);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%#08x", 42);
+		ft = ft_printf("%#08x\n", 42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%#.x %#.0x", 0, 0);
+		ft = ft_printf("%#.x %#.0x\n", 0, 0);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%.x %.0x", 0, 0);
+		ft = ft_printf("%.x %.0x\n", 0, 0);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%5.x %5.0x", 0, 0);
+		ft = ft_printf("%5.x %5.0x\n", 0, 0);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
@@ -171,47 +171,47 @@ int		main(int argc, char **argv)
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%X", -42);
+		ft = ft_printf("%X\n", -42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%lX", 4294967296);
+		ft = ft_printf("%lX\n", 4294967296);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%llX", 9223372036854775807);
+		ft = ft_printf("%llX\n", 9223372036854775807);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%llX", 9223372036854775808);
+		ft = ft_printf("%llX\n", 9223372036854775808);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%010X", 542);
+		ft = ft_printf("%010X\n", 542);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%#llX", 9223372036854775807);
+		ft = ft_printf("%#llX\n", 9223372036854775807);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%#X", 0);
+		ft = ft_printf("%#X\n", 0);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%#08X", 42);
+		ft = ft_printf("%#08X\n", 42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%#.X %#.0X", 0, 0);
+		ft = ft_printf("%#.X %#.0X\n", 0, 0);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%.X %.0X", 0, 0);
+		ft = ft_printf("%.X %.0X\n", 0, 0);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		ft = ft_printf("%5.X %5.0X", 0, 0);
+		ft = ft_printf("%5.X %5.0X\n", 0, 0);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 	}

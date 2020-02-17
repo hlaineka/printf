@@ -25,14 +25,12 @@ static int	selector(t_tags *command, va_list *source)
 		return(print_p(command, source));
 	if (specifier == 'x' || specifier == 'X')
 		return(print_x(command, source));
-	/*if (specifier == 'd')
+	if (specifier == 'd' || specifier == 'i')
 		return(print_d(command, source));
-	if (specifier == 'i')
-		return(print_i(command, source));
+	/*if (specifier == 'u')
+		return(print_u(command, source));
 	if (specifier == 'o')
 		return(print_o(command, source));
-	if (specifier == 'u')
-		return(print_u(command, source));
 		*/
 	return (0);
 }
@@ -227,6 +225,7 @@ int 		ft_printf(const char *format, ...)
 		}
 		i++;
 	}
+	free(command);
 	va_end(source);
 	return(printed);
 }

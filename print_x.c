@@ -92,8 +92,8 @@ int			print_x(t_tags *command, va_list *source)
 	unsigned int	hexa;
 	char			*printable;
 	
-	hexa = va_arg(*source, unsigned int);
-	printable = ft_itoa_hexa((long long int)hexa);
+	hexa = va_arg(*source, int);
+	printable = ft_itoa_hexa(hexa);
 	printable = hexa_editor(printable, command);
 	ft_putstr(printable);
 	return(ft_strlen(printable));

@@ -44,7 +44,7 @@ int			print_p(t_tags *command, va_list *source)
 	
 	pointer = (void*)malloc(sizeof(void*));
 	pointer = va_arg(*source, void*);
-	printable = ft_itoa_base((long long int)(pointer), 16, TRUE);
+	printable = ft_itoa_base((long long int)(pointer), 16);
 	printable = ft_strjoin("0x", printable);
 	printable = pointer_editor(printable, command);
 	ft_putstr(printable);

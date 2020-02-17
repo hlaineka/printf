@@ -4,7 +4,7 @@
 ** turns intiger value to char, using the base given.
 */
 
-static int	ft_define_hexa_length(unsigned long int n)
+static int	ft_define_hexa_length(int n)
 {
 	int i;
 	int	base;
@@ -19,12 +19,12 @@ static int	ft_define_hexa_length(unsigned long int n)
 	return (i);
 }
 
-char		*ft_itoa_hexa(long long int n)
+char		*ft_itoa_hexa(int n)
 {
 	static char			*str;
 	int					w;
-	unsigned long int	base;
-	unsigned long int	number;
+	int					base;
+	int					number;
 
 	base = 16;
 	if (n < 0)
@@ -33,8 +33,8 @@ char		*ft_itoa_hexa(long long int n)
 		number = ~number;
 		number = number + 1;
 	}
-	else
-		number = (unsigned long int)n;
+	//else
+	//	number = (unsigned long int)n;
 	if (NULL != (str = (char*)malloc(sizeof(char) * (ft_define_hexa_length(n) + 1))))
 	{
 		w = ft_define_hexa_length(n) - 1;
