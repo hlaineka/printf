@@ -4,29 +4,91 @@
 ** turns intiger value to char, using the base given.
 */
 
-char		*ft_itoa_base(long long int n, int base)
+int	ft_llmin(int base)
 {
-	static char		*str;
-	int				w;
+	int	returnable;
+	long long int	int_min;
 
+	int_min = -9223372036854775807;
+	returnable = ft_define_base_length((int_min - base + 1), base);
+	return(returnable + 2);
+}
+
+int	ft_define_base_length(long long int n, int base)
+{
+	int i;
+	long long int	int_min;
+
+	int_min = -9223372036854775807;
+	i = 1;
+	if (n < int_min)
+		return(ft_llmin(base));
+	if (n < 0)
+	{
+		i++;
+		n = n * (-1);
+	}
+	while ((n / base) > 0)
+	{
+		i++;
+		n = n / base;
+	}
+	return (i);
+}
+
+char		*ft_llintmin_itoa(long long int n, unsigned long long int base)
+{
+	char			*returnable;
+	char			*temp;
+	long long int	number;
+
+	if (NULL != (returnable = (char*)malloc(sizeof(char) * 2)))
+	{
+		returnable[0] = '-';
+		number = (n / (ft_define_base_length(n, base) - 2));
+		if (number <= 9)
+			returnable[1] = (number + '0');
+		else
+			returnable[1] = (number - 10 + 'a');
+		temp = ft_itoa_base(n - (number * (ft_define_base_length(n, base) - 2)), base, TRUE);
+		returnable = ft_strjoin_frees2(returnable, temp);
+		return(returnable);
+	}
+	return(NULL);
+}
+
+char		*ft_itoa_base(long long int n, unsigned long long int base, int sign)
+{
+	static char				*str;
+	int						w;
+	unsigned long long int	number;
+	long long int	int_min;
+
+	int_min = -9223372036854775807;
+	w = ft_define_base_length(n, base) - 1;
+	if (n == int_min)
+			return(ft_llintmin_itoa(n, base));
 	if (NULL != (str = (char*)malloc(sizeof(char) * (ft_define_base_length(n, base) + 1))))
 	{
-		w = ft_define_base_length(n, base) - 1;
 		str[w + 1] = ('\0');
-		if (n < 0)
+		if (sign)
 		{
-			str[0] = ('-');
-			n = n * (-1);
+			if (n < 0)
+			{
+				str[0] = ('-');
+				n = n * (-1);
+			}
 		}
-		while (n >= base)
+		number = (unsigned long long int)n;
+		while (number >= base)
 		{
-			if (n % base <= 9)
-				str[w--] = ((n % base) + '0');
+			if (number % base <= 9)
+				str[w--] = ((number % base) + '0');
 			else
-				str[w--] = ((n % base) - 10 + 'a');
-			n = n / base;
+				str[w--] = ((number % base) - 10 + 'a');
+			number = number / base;
 		}
-		str[w] = n + '0';
+		str[w] = number + '0';
 		return (str);
 	}
 	return (NULL);

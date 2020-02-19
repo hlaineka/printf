@@ -22,8 +22,12 @@ int		main(int argc, char **argv)
 	c = 'c';
 	if (argc == 2)
 	{
-		ft = ft_printf("%p, %p\n", test3, test4);
+		ft = ft_printf("%p\n", test3);
 		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		pf = printf("%p\n", test3);
+		ft_putnbr(pf);
 		ft_putchar('\n');
 
 		ft = ft_printf("%30p, %p\n", test3, test4);

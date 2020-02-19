@@ -18,7 +18,10 @@ static char	*hexa_width(char *string, int width, t_tags *command)
 	
 	if ((int)ft_strlen(string) < width)
 	{
-		returnable = ft_strset(' ', width);
+		if(command->flag_zero)
+			returnable = ft_strset('0', width);
+		else
+			returnable = ft_strset(' ', width);
 		if(command->flag_minus)
 			ft_strpaste(returnable, string);
 		else
@@ -34,7 +37,9 @@ static char	*hexa_precision(char *string, int precision)
 {
 	char	*returnable;
 
-	if ((int)ft_strlen(string) < precision)
+	if (ft_strequ(string, "0"))
+		returnable = ft_strnew(0);
+	else if ((int)ft_strlen(string) < precision)
 	{
 		returnable = ft_strset('0', precision);
 		ft_strpaste(&returnable[precision - ft_strlen(string)], string);
@@ -46,11 +51,20 @@ static char	*hexa_precision(char *string, int precision)
 	
 }
 
-static char	*hexa_hash(char *string)
+static char	*hexa_hash(char *string, t_tags *command)
 {
 	char	*returnable;
 
-	returnable = ft_strjoin("0x", string);
+	if (string[0] == '\0' || (string[0] == '0' && string[1] == '\0'))
+		returnable = ft_strdup(string);
+	else if (command->flag_zero && command->width != -1)
+	{	
+		returnable = hexa_width(string, command->width - 2, command);
+		returnable = ft_strjoin("0x", string);
+		return(returnable);
+	}
+	else
+		returnable = ft_strjoin("0x", string);
 	free(string);
 	return(returnable);
 }
@@ -76,10 +90,10 @@ static char	*hexa_upperalpha(char *string)
 
 static char *hexa_editor(char *printable, t_tags *command)
 {
-	if (command->flag_hash)
-		printable = hexa_hash(printable);
 	if (command->precision != -1)
 		printable = hexa_precision(printable, command->precision);
+	if (command->flag_hash)
+		printable = hexa_hash(printable, command);
 	if (command->width != -1)
 		printable = hexa_width(printable, command->width, command);
 	if (command->specifier == 'X')
@@ -87,12 +101,36 @@ static char *hexa_editor(char *printable, t_tags *command)
 	return(printable);
 }
 
+unsigned long long int	read_hexa(t_tags *command, va_list *source)
+{
+	unsigned long long int	returnable;
+	
+	if(command->length_hh)
+	{
+		returnable = va_arg(*source, int);
+		returnable = (unsigned char)returnable;
+	}
+	else if(command->length_h)
+	{	
+		returnable = va_arg(*source, int);
+		returnable = (unsigned short int)returnable;
+	}
+	else if(command->length_l)
+		returnable = va_arg(*source, unsigned long int);
+	else if(command->length_ll)
+		returnable = va_arg(*source, unsigned long long int);
+	else
+		returnable = va_arg(*source, int);
+	returnable = (unsigned long long int)returnable;
+	return(returnable);
+}
+
 int			print_x(t_tags *command, va_list *source)
 {
-	unsigned int	hexa;
-	char			*printable;
+	unsigned long long int	hexa;
+	char					*printable;
 	
-	hexa = va_arg(*source, int);
+	hexa = read_hexa(command, source);
 	printable = ft_itoa_hexa(hexa);
 	printable = hexa_editor(printable, command);
 	ft_putstr(printable);

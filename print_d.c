@@ -81,13 +81,31 @@ static char *int_editor(char *printable, t_tags *command, int original)
 	return(printable);
 }
 
+long long int	read_int(t_tags *command, va_list *source)
+{
+	long long int	returnable;
+	
+	if(command->length_hh)
+		returnable = (signed char)va_arg(*source, int);
+	else if(command->length_h)
+		returnable = (short int)va_arg(*source, int);
+	else if(command->length_l)
+		returnable = va_arg(*source, long int);
+	else if(command->length_ll)
+		returnable = va_arg(*source, long long int);
+	else
+		returnable = va_arg(*source, int);
+	returnable = (long long int)returnable;
+	return(returnable);
+}
+
 int			print_d(t_tags *command, va_list *source)
 {
 	char	*printable;
 	int		aquired;
 
-	aquired = va_arg(*source, int);
-	printable = ft_itoa_base(aquired, 10);
+	aquired = read_int(command, source);
+	printable = ft_itoa_base(aquired, 10, TRUE);
 	printable = int_editor(printable, command, aquired);
 	ft_putstr(printable);
 	return(ft_strlen(printable));

@@ -18,6 +18,17 @@ int		main(int argc, char **argv)
 	c = 'c';
 	if (argc == 2)
 	{
+		ft_printf("%ld\n", 2147483648);
+		ft_printf("%ld\n", -2147483649);
+		ft_printf("%lld\n", 9223372036854775807);
+		ft_printf("%lld\n", -9223372036854775808);
+		
+		/*//pf = printf("%5u", 4294967295);
+		ft = ft_printf("%5u", 4294967295);
+		//printf("%i\n", pf);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+		
 		pf = printf("%i\n", -42);
 		ft = ft_printf("%i\n", -42);
 		printf("%i\n", pf);
@@ -32,7 +43,7 @@ int		main(int argc, char **argv)
 		
 		ft = ft_printf("%10.5d\n", -42);
 		ft_putnbr(ft);
-		ft_putchar('\n');
+		ft_putchar('\n');*/
 	}
 	return(1);
 }

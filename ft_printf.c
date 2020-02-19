@@ -27,9 +27,9 @@ static int	selector(t_tags *command, va_list *source)
 		return(print_x(command, source));
 	if (specifier == 'd' || specifier == 'i')
 		return(print_d(command, source));
-	/*if (specifier == 'u')
+	if (specifier == 'u')
 		return(print_u(command, source));
-	if (specifier == 'o')
+	/*if (specifier == 'o')
 		return(print_o(command, source));
 		*/
 	return (0);
@@ -177,7 +177,7 @@ static int	check_command(const char *format, t_tags *command)
 	while (format[w] != '\0' && !is_specifier(format[w]))
 	{
 		if (format[w] == '-' || format[w] == '+' || format[w] == ' ' || format[w] == '#' ||
-			(format[w - 1] == '%' && format[w] == '0'))
+			(command->precision == -1 && command->width == -1 && !command->flag_zero && format[w] == '0'))
 			set_flag(command, format[w]);
 		else if (ft_isdigit(format[w]))
 			if (command->precision == -1)
