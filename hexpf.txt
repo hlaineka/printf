@@ -1,78 +1,96 @@
-0x7fe4f9400690, 0x7fe4f94006a0
-31
-                0x7fe4f9400690, 0x7fe4f94006a0
-47
-0x7fe4f9400690                , 0x7fe4f94006a0
-47
-11d2, 34a9d1
+test 1: 11d2, 34a9d1
 13
-                          11d2,                         34a9d1
+test 2:                           11d2,                         34a9d1
 63
-11d2                          , 34a9d1                        
+test 3: 11d2                          , 34a9d1                        
 63
-00011d2, 034a9d1
+test 4: 00011d2, 034a9d1
 17
-11d2, 34a9d1
+test 5: 11d2, 34a9d1
 13
-0x11d2, 0x34a9d1
+test 6: 0x11d2, 0x34a9d1
 17
-  0x11d2, 0x34a9d1
+test 7:   0x11d2, 0x34a9d1
 19
-ffffffd6
+test 8: ffffffd6
 9
-100000000
+test 9: 100000000
 10
-7fffffffffffffff
+test 10: 7fffffffffffffff
 17
-8000000000000000
+test 11: 8000000000000000
 17
-000000021e
+test 12: 000000021e
 11
-0x7fffffffffffffff
+test 13: 0x7fffffffffffffff
 19
-0
+test 14: 0
 2
-0x00002a
+test 15: 0x00002a
 9
- 
+test 16: 0x2a    
+9
+test 17:  
 2
- 
+test 18:  
 2
-           
+test 19:            
 12
-11D2, 34A9D1
+test 20: 11D2, 34A9D1
 13
-                          11D2,                         34A9D1
+test 21:                           11D2,                         34A9D1
 63
-11D2                          , 34A9D1                        
+test 22: 11D2                          , 34A9D1                        
 63
-00011D2, 034A9D1
+test 23: 00011D2, 034A9D1
 17
-11D2, 34A9D1
+test 24: 11D2, 34A9D1
 13
-0X11D2, 0X34A9D1
+test 25: 0X11D2, 0X34A9D1
 17
-  0X11D2, 0X34A9D1
+test 26:   0X11D2, 0X34A9D1
 19
-FFFFFFD6
+test 27: FFFFFFD6
 9
-100000000
+test 28: 100000000
 10
-7FFFFFFFFFFFFFFF
+test 29: 7FFFFFFFFFFFFFFF
 17
-8000000000000000
+test 30: 8000000000000000
 17
-000000021E
+test 31: 000000021E
 11
-0X7FFFFFFFFFFFFFFF
+test 32: 0X7FFFFFFFFFFFFFFF
 19
-0
+test 33: 0
 2
-0X00002A
+test 34: 0X00002A
 9
- 
+test 35:  
 2
- 
+test 36:  
 2
-           
+test 37:            
 12
+test 38:    51
+6
+test 39: 00052
+6
+test 40: 4704 
+6
+test 41:  04704
+7
+test 42: 04704 
+7
+test 43: 4704 
+6
+test 44: 0000004704
+11
+test 45: test: 0
+8
+test 46: test:            
+18
+test 47: test: 0 0
+10
+test 48: test: 0000000052
+17

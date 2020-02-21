@@ -18,7 +18,7 @@ static char	*hexa_width(char *string, int width, t_tags *command)
 	
 	if ((int)ft_strlen(string) < width)
 	{
-		if(command->flag_zero)
+		if(command->flag_zero && !command->flag_minus)
 			returnable = ft_strset('0', width);
 		else
 			returnable = ft_strset(' ', width);
@@ -26,6 +26,7 @@ static char	*hexa_width(char *string, int width, t_tags *command)
 			ft_strpaste(returnable, string);
 		else
 			ft_strpaste(&returnable[width - ft_strlen(string)], string);
+		returnable[width] = '\0';
 	}
 	else
 		returnable = ft_strdup(string);
@@ -59,8 +60,8 @@ static char	*hexa_hash(char *string, t_tags *command)
 		returnable = ft_strdup(string);
 	else if (command->flag_zero && command->width != -1)
 	{	
-		returnable = hexa_width(string, command->width - 2, command);
-		returnable = ft_strjoin("0x", string);
+		returnable = hexa_width(string, (command->width - 2), command);
+		returnable = ft_strjoin("0x", returnable);
 		return(returnable);
 	}
 	else

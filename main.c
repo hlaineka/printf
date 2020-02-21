@@ -18,10 +18,13 @@ int		main(int argc, char **argv)
 	c = 'c';
 	if (argc == 2)
 	{
-		ft_printf("%ld\n", 2147483648);
+		ft_printf("%#08x\n", 42);
+		ft_printf("%#-08x\n", 42);
+		
+		/*ft_printf("%ld\n", 2147483648);
 		ft_printf("%ld\n", -2147483649);
 		ft_printf("%lld\n", 9223372036854775807);
-		ft_printf("%lld\n", -9223372036854775808);
+		ft_printf("%lld\n", -9223372036854775808);*/
 		
 		/*//pf = printf("%5u", 4294967295);
 		ft = ft_printf("%5u", 4294967295);

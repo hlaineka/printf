@@ -34,8 +34,10 @@ char	*ft_strjoin(const char *s1, const char *s2)
 				i++;
 			}
 			while (s2[w] != '\0')
-			{
-				returnable[i++] = s2[w++];
+			{	
+				returnable[i] = s2[w];
+				i++;
+				w++;
 			}
 			returnable[i] = '\0';
 			return (returnable);

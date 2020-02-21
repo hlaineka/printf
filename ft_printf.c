@@ -29,9 +29,8 @@ static int	selector(t_tags *command, va_list *source)
 		return(print_d(command, source));
 	if (specifier == 'u')
 		return(print_u(command, source));
-	/*if (specifier == 'o')
+	if (specifier == 'o')
 		return(print_o(command, source));
-		*/
 	return (0);
 }
 
@@ -84,6 +83,7 @@ static char	*ft_addchar(char **source, char c)
 static void	initialize_command(t_tags *command)
 {
 	command->specifier = '\0';
+	command->positive_value = FALSE; 
 	command->flag_zero = FALSE;;
 	command->flag_minus = FALSE;
 	command->flag_plus = FALSE;

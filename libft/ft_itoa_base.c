@@ -36,25 +36,17 @@ int	ft_define_base_length(long long int n, int base)
 	return (i);
 }
 
-char		*ft_llintmin_itoa(long long int n, unsigned long long int base)
+char		*ft_llintmin_itoa(unsigned long long int base)
 {
 	char			*returnable;
-	char			*temp;
-	long long int	number;
 
-	if (NULL != (returnable = (char*)malloc(sizeof(char) * 2)))
-	{
-		returnable[0] = '-';
-		number = (n / (ft_define_base_length(n, base) - 2));
-		if (number <= 9)
-			returnable[1] = (number + '0');
-		else
-			returnable[1] = (number - 10 + 'a');
-		temp = ft_itoa_base(n - (number * (ft_define_base_length(n, base) - 2)), base, TRUE);
-		returnable = ft_strjoin_frees2(returnable, temp);
-		return(returnable);
-	}
-	return(NULL);
+	if (base == 10)
+		returnable = ft_strdup("-9223372036854775808");
+	if (base == 8)
+		returnable = ft_strdup("-777777777777777777777");
+	if (base == 16)
+		returnable = ft_strdup("-7FFFFFFFFFFFFFFF");
+	return(returnable);
 }
 
 char		*ft_itoa_base(long long int n, unsigned long long int base, int sign)
@@ -66,8 +58,8 @@ char		*ft_itoa_base(long long int n, unsigned long long int base, int sign)
 
 	int_min = -9223372036854775807;
 	w = ft_define_base_length(n, base) - 1;
-	if (n == int_min)
-			return(ft_llintmin_itoa(n, base));
+	if (n <= int_min)
+			return(ft_llintmin_itoa(base));
 	if (NULL != (str = (char*)malloc(sizeof(char) * (ft_define_base_length(n, base) + 1))))
 	{
 		str[w + 1] = ('\0');

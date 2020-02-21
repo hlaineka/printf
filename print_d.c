@@ -19,16 +19,24 @@ static char	*int_width(char *string, int width, t_tags *command)
 	
 	if ((int)ft_strlen(string) < width)
 	{
-		if (command->flag_zero)
+		if (command->flag_zero && !command->flag_minus)
 		{	
 			returnable = ft_strset('0', width);
-			if (!ft_isdigit(string[0]))
-				returnable = ft_char_str_join(string[0], returnable);
+			//if (!ft_isdigit(string[0]))
+			//	returnable = ft_char_str_join(string[0], returnable);
 		}
 		else
 			returnable = ft_strset(' ', width);
 		if(command->flag_minus)
 			ft_strpaste(returnable, string);
+		else if (command->flag_zero)
+		{
+			ft_strpaste_digits(&returnable[width - ft_strlen(string)], string);
+			if (!command->positive_value)
+				returnable[0] = '-';
+			if (command->positive_value && command->flag_plus)
+				returnable[0] = '+';
+		}
 		else
 			ft_strpaste(&returnable[width - ft_strlen(string)], string);
 	}
@@ -45,9 +53,11 @@ static char	*int_precision(char *string, t_tags *command)
 	if ((int)ft_strlen(string) < command->precision)
 	{
 		returnable = ft_strset('0', command->precision);
-		if (!ft_isdigit(string[0]))
-			returnable = ft_char_str_join(string[0], returnable);
 		ft_strpaste_digits(&returnable[ft_strlen(returnable) - ft_strlen(string)], string);
+		if (!ft_isdigit(string[0]) && command->width < command->precision)
+			returnable = ft_char_str_join(string[0], returnable);
+		if (!ft_isdigit(string[0]) && command->width >= command->precision)
+			returnable[0] = string[0];
 	}
 	else
 		returnable = ft_strdup(string);
@@ -56,24 +66,29 @@ static char	*int_precision(char *string, t_tags *command)
 	
 }
 
-char		*add_intspace(char *string)
+char		*add_intspace(char *string, t_tags *command)
 {
 	char	*returnable;
 
 	if (ft_isdigit(string[0]))
-		returnable = ft_strjoin_frees2(" ", string);
+	{	
+		if (command->flag_zero)
+			returnable = ft_strjoin_frees2("0", string);
+		else
+			returnable = ft_strjoin_frees2(" ", string);
+	}
 	else
 		return(string);
 	return(returnable);
 	
 }
 
-static char *int_editor(char *printable, t_tags *command, int original)
+static char *int_editor(char *printable, t_tags *command)
 {
-	if (command->flag_plus && original >= 0)
+	if (command->flag_plus && command->positive_value)
 		printable = ft_strjoin_frees2("+", printable);
-	if (command->flag_space)
-		printable = add_intspace(printable);
+	if (command->flag_space && command->positive_value)
+		printable = add_intspace(printable, command);
 	if (command->precision != -1)
 		printable = int_precision(printable, command);
 	if (command->width != -1)
@@ -105,8 +120,10 @@ int			print_d(t_tags *command, va_list *source)
 	int		aquired;
 
 	aquired = read_int(command, source);
+	if (aquired >= 0)
+		command->positive_value = TRUE;
 	printable = ft_itoa_base(aquired, 10, TRUE);
-	printable = int_editor(printable, command, aquired);
+	printable = int_editor(printable, command);
 	ft_putstr(printable);
 	return(ft_strlen(printable));
 }

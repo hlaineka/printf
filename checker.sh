@@ -10,6 +10,20 @@ diff -a stringpf.txt stringft.txt
 rm -rf bin.txt
 echo "string and char checked! Press enter to check pointers:"
 read text
+gcc main_pointer.c -o pointer libftprintf.a
+make clean > bin.txt
+./pointer asdf
+rm -rf bin.txt
+gcc main_pointer2.c -o pointer2 libftprintf.a
+make clean > bin.txt
+./pointer asdf
+rm -rf bin.txt
+gcc main_pointer3.c -o pointer3 libftprintf.a
+make clean > bin.txt
+./pointer asdf
+rm -rf bin.txt
+echo "pointers checked! Press enter to check hexas and octas:"
+read text
 make main_hex > bin.txt
 echo -e "\n\ntime for ft_printf:"
 time ./hexft asdfasdf > hexft.txt
@@ -20,7 +34,7 @@ echo -e "---"
 echo -e "> yours\n\n"
 diff -a hexpf.txt hexft.txt
 rm -rf bin.txt
-echo "pointers, hexas and octas checked! Press enter to check ints:"
+echo "hexas and octas checked! Press enter to check ints:"
 read text
 make main_int > bin.txt
 echo -e "\n\ntime for ft_printf:"

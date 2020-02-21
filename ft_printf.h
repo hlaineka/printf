@@ -25,6 +25,7 @@
 typedef struct	s_tags
 {
 	char		specifier;
+	int			positive_value;
 	int			flag_zero;
 	int			flag_minus;
 	int			flag_plus;

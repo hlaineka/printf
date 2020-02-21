@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 
-SRCS = ft_printf.c print_s.c print_c.c print_p.c print_x.c print_d.c print_u.c
+SRCS = ft_printf.c print_s.c print_c.c print_p.c print_x.c print_d.c print_u.c print_o.c
 
 OBJ = $(SRCS:.c=.o)
 

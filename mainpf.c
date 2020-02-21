@@ -177,12 +177,6 @@ int		main(int argc, char **argv)
 		//printf("% c\n", 0);
 		//ft_printf("% c\n", 0);
 		//ft_putchar('\n');
-
-		pf = printf("%p, %p\n", test, test2);
-		ft = ft_printf("%p, %p\n", test, test2);
-		printf("%i\n", pf);
-		ft_putnbr(ft);
-		ft_putchar('\n');
 	}
 	return(1);
 }
