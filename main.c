@@ -9,6 +9,7 @@ int		main(int argc, char **argv)
 	char	c;
 	int		pf;
 	int		ft;
+	long double num;
 
 	test = ft_strdup("abc");
 	test2 = ft_strdup("def");
@@ -16,10 +17,17 @@ int		main(int argc, char **argv)
 	ft = 0;
 	i = 5;
 	c = 'c';
+	num = 10.235685345;
 	if (argc == 2)
 	{
-		ft_printf("%#08x\n", 42);
-		ft_printf("%#-08x\n", 42);
+		ft_printf("%5u", 4294967294);
+
+		
+		//ft_printf("%f\n", 0.0004);
+		//printf("%f\n", 0.0004);
+
+		//ft_printf("%#08x\n", 42);
+		//ft_printf("%#-08x\n", 42);
 		
 		/*ft_printf("%ld\n", 2147483648);
 		ft_printf("%ld\n", -2147483649);

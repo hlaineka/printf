@@ -31,6 +31,8 @@ static int	selector(t_tags *command, va_list *source)
 		return(print_u(command, source));
 	if (specifier == 'o')
 		return(print_o(command, source));
+	if (specifier == 'f')
+		return(print_f(command, source));
 	return (0);
 }
 
@@ -38,7 +40,7 @@ static int	is_specifier(char c)
 {
 	if (c == 's' || c == 'c' || c == 'p' || c == 'd'
 	|| c == 'i' || c == 'o' || c == 'u' || c == 'x'
-	|| c == 'X' || c == '%')
+	|| c == 'X' || c == '%' || c == 'f')
 		return (TRUE);
 	return (FALSE);
 }

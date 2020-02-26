@@ -55,6 +55,7 @@ int			print_d(t_tags *command, va_list *source);
 int			print_o(t_tags *command, va_list *source);
 int			print_u(t_tags *command, va_list *source);
 int			print_x(t_tags *command, va_list *source);
+int			print_f(t_tags *command, va_list *source);
 
 /*
 ** Helper functions for print_s

@@ -29,21 +29,30 @@ int	ft_define_uint_length(unsigned long long int n)
 	return (i);
 }
 
-char		*ft_itoa_uint(unsigned long long int n)
+char		*ft_itoa_uint(unsigned long long int n, t_tags *command)
 {
 	static char		*str;
 	int				w;
 	unsigned int	base;
 
 	base = 10;
-	if (NULL != (str = (char*)malloc(sizeof(char) * (ft_define_base_length(n, base) + 1))))
+	if (command->length_hh)
+		n = (unsigned char)n;
+	else if (command->length_h)
+		n = (unsigned short int) n;
+	else if (command->length_l)
+		n = (unsigned long int) n;
+	else if (command->length_ll)
+		n = (unsigned long long int) n;
+	else
+		n = (unsigned int)n;
+	if (NULL != (str = (char*)malloc(sizeof(char) * (ft_define_uint_length(n) + 1))))
 	{
 		w = ft_define_uint_length(n) - 1;
 		str[w + 1] = ('\0');
 		while (n >= base)
 		{
-			if (n % base <= 9)
-				str[w--] = ((n % base) + '0');
+			str[w--] = ((n % base) + '0');
 			n = n / base;
 		}
 		str[w] = n + '0';
@@ -151,7 +160,7 @@ int			print_u(t_tags *command, va_list *source)
 	int		aquired;
 
 	aquired = read_uint(command, source);
-	printable = ft_itoa_uint(aquired);
+	printable = ft_itoa_uint(aquired, command);
 	printable = uint_editor(printable, command, aquired);
 	ft_putstr(printable);
 	return(ft_strlen(printable));
