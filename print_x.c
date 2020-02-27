@@ -12,6 +12,57 @@
 
 #include "ft_printf.h"
 
+static int	ft_define_hexa_length(unsigned long long int n)
+{
+	int i;
+	int	base;
+
+	i = 1;
+	base = 16;
+	while ((n / base) > 0)
+	{
+		i++;
+		n = n / base;
+	}
+	return (i);
+}
+
+char		*ft_itoa_hexa(unsigned long long int n, t_tags *command)
+{
+	static char				*str;
+	int						w;
+	unsigned long long int	base;
+
+	base = 16;
+	if (command->length_hh)
+		n = (unsigned char)n;
+	else if (command->length_h)
+		n = (unsigned short int) n;
+	else if (command->length_l)
+		n = (unsigned long int) n;
+	else if (command->length_ll)
+		n = (unsigned long long int) n;
+	else
+		n = (unsigned int)n;
+	if (NULL != (str = (char*)malloc(sizeof(char) * (ft_define_hexa_length(n) + 1))))
+	{
+		w = ft_define_hexa_length(n) - 1;
+		str[w + 1] = ('\0');
+		while (n >= base)
+		{
+			if (n % base <= 9)
+				str[w--] = ((n % base) + '0');
+			else
+				str[w--] = ((n % base) - 10 + 'a');
+			n = n / base;
+		}
+		str[w] = n + '0';
+		return (str);
+	}
+	return (NULL);
+}
+
+
 static char	*hexa_width(char *string, int width, t_tags *command)
 {
 	char	*returnable;
@@ -132,7 +183,7 @@ int			print_x(t_tags *command, va_list *source)
 	char					*printable;
 	
 	hexa = read_hexa(command, source);
-	printable = ft_itoa_hexa(hexa);
+	printable = ft_itoa_hexa(hexa, command);
 	printable = hexa_editor(printable, command);
 	ft_putstr(printable);
 	return(ft_strlen(printable));

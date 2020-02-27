@@ -50,7 +50,9 @@ static char	*int_precision(char *string, t_tags *command)
 {
 	char	*returnable;
 	 
-	if ((int)ft_strlen(string) < command->precision)
+	if (ft_strequ(string, "0"))
+		returnable = ft_strnew(0);
+	else if ((int)ft_strlen(string) < command->precision)
 	{
 		returnable = ft_strset('0', command->precision);
 		ft_strpaste_digits(&returnable[ft_strlen(returnable) - ft_strlen(string)], string);
@@ -87,10 +89,10 @@ static char *int_editor(char *printable, t_tags *command)
 {
 	if (command->flag_plus && command->positive_value)
 		printable = ft_strjoin_frees2("+", printable);
-	if (command->flag_space && command->positive_value)
-		printable = add_intspace(printable, command);
 	if (command->precision != -1)
 		printable = int_precision(printable, command);
+	if (command->flag_space && command->positive_value)
+		printable = add_intspace(printable, command);
 	if (command->width != -1)
 		printable = int_width(printable, command->width, command);
 	return(printable);
@@ -116,8 +118,8 @@ long long int	read_int(t_tags *command, va_list *source)
 
 int			print_d(t_tags *command, va_list *source)
 {
-	char	*printable;
-	int		aquired;
+	char			*printable;
+	long long int	aquired;
 
 	aquired = read_int(command, source);
 	if (aquired >= 0)

@@ -66,8 +66,8 @@ int			print_s(t_tags *command, va_list *source)
 		ft_putstr("(null)");
 		return(6);
 	}
-		printable = ft_strdup(aquired);
-		printable = string_editor(printable, command);
-		ft_putstr(printable);
-		return(ft_strlen(printable));
+	printable = ft_strdup(aquired);
+	printable = string_editor(printable, command);
+	ft_putstr(printable);
+	return(ft_strlen(printable));
 }

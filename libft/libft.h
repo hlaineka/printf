@@ -108,11 +108,11 @@ char				*ft_str_realloc(char *src, int start, int end);
 char				*ft_strset(char value, size_t num);
 void				ft_strpaste(char *dest, char *src);
 int					ft_define_base_length(long long int n, int base);
-char				*ft_itoa_base(long long int n, unsigned long long int base, int signed);
-char				*ft_itoa_hexa(unsigned long long int n);
+char				*ft_itoa_base(long long int n, long long int base, int signed);
 char				*ft_strjoin_frees2(char *s1, char *s2);
 void				ft_strpaste_digits(char *dest, char *src);
 char				*ft_char_str_join(char c, char *s1);
 char				*ft_itoa_float(long double n);
+char				*ft_strsub_freestr(char *s, unsigned int start, size_t len);
 
 #endif

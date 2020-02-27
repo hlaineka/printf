@@ -19,7 +19,7 @@ static char	*octal_width(char *string, int width, t_tags *command)
 	
 	if ((int)ft_strlen(string) < width)
 	{
-		if(command->flag_zero)
+		if(command->flag_zero && command->precision != 0 && !command->flag_minus)
 			returnable = ft_strset('0', width);
 		else
 			returnable = ft_strset(' ', width);
@@ -57,7 +57,7 @@ static char	*octal_hash(char *string, t_tags *command)
 	char	*returnable;
 
 	if (string[0] == '\0' || (string[0] == '0' && string[1] == '\0'))
-		returnable = ft_strdup(string);
+		returnable = ft_strdup("0");
 	else if (command->flag_zero && command->width != -1)
 	{	
 		returnable = octal_width(string, command->width - 2, command);
