@@ -19,12 +19,8 @@ static char	*int_width(char *string, int width, t_tags *command)
 	
 	if ((int)ft_strlen(string) < width)
 	{
-		if (command->flag_zero && !command->flag_minus)
-		{	
+		if (command->flag_zero && (!command->flag_minus || string[0] == '0'))
 			returnable = ft_strset('0', width);
-			//if (!ft_isdigit(string[0]))
-			//	returnable = ft_char_str_join(string[0], returnable);
-		}
 		else
 			returnable = ft_strset(' ', width);
 		if(command->flag_minus)
@@ -52,14 +48,12 @@ static char	*int_precision(char *string, t_tags *command)
 	 
 	if (ft_strequ(string, "0"))
 		returnable = ft_strnew(0);
-	else if ((int)ft_strlen(string) < command->precision)
+	else if ((int)ft_strlen(string) <= command->precision)
 	{
 		returnable = ft_strset('0', command->precision);
 		ft_strpaste_digits(&returnable[ft_strlen(returnable) - ft_strlen(string)], string);
-		if (!ft_isdigit(string[0]) && command->width < command->precision)
+		if (!ft_isdigit(string[0]))
 			returnable = ft_char_str_join(string[0], returnable);
-		if (!ft_isdigit(string[0]) && command->width >= command->precision)
-			returnable[0] = string[0];
 	}
 	else
 		returnable = ft_strdup(string);
