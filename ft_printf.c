@@ -101,6 +101,7 @@ static void	initialize_command(t_tags *command)
 	command->length_l = FALSE;
 	command->length_ll = FALSE;
 	command->length_L = FALSE;
+	command->empty = FALSE;
 }
 
 static void	set_flag(t_tags *command, char flag)
@@ -194,6 +195,8 @@ static int	check_command(const char *format, t_tags *command)
 	}
 	if (format[w] != '\0' && is_specifier(format[w]))
 		command->specifier = format[w];
+	else
+		command->empty = TRUE;
 	return(w);
 }
 
@@ -217,7 +220,8 @@ int 		ft_printf(const char *format, ...)
 		{
 			w = check_command(&format[i], command);
 			i = i + w;
-			printed = printed + selector(command, &source);
+			if (!command->empty)
+				printed = printed + selector(command, &source);
 			initialize_command(command);
 		}
 		else

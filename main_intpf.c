@@ -282,39 +282,128 @@ int		main(int argc, char **argv)
 		pf = printf("%03.2d\n", -1);
 		printf("%i\n", pf);
 
-				pf = printf("% ++d\n", -42);
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%08.5i", 34);
 		printf("%i\n", pf);
 
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%0-10.5i", -216);
+		printf("%i\n", pf);
+
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%08.3d", -8473);
+		printf("%i\n", pf);
+
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%08.5u", 34);
+		printf("%i\n", pf);
+
+		//55
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%08.5u", 0);
+		printf("%i\n", pf);
+
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%08.3u", 8375);
+		printf("%i\n", pf);
+
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%0-8.5u", 34);
+		printf("%i\n", pf);
+
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%lu", 22337203685477);
+		printf("%i\n", pf);
+
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%llu", 22337203685477);
+		printf("%i\n", pf);
+
+		//60
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%lu", 22337203685477ul);
+		printf("%i\n", pf);
+
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%37llu", 522337203685470ull);
+		printf("%i\n", pf);
+
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%.0u", 0);
+		printf("%i\n", pf);
+
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%5.0u", 0);
+		printf("%i\n", pf);
+
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%-5.u", 0);
+		printf("%i\n", pf);
+		
+		printf("test %i: ", test_number);
+		test_number++;
 						pf = printf("% ++d\n", -42);
 		printf("%i\n", pf);
 
+		printf("test %i: ", test_number);
+		test_number++;
 				pf = printf("% ++d\n", -42);
 		printf("%i\n", pf);
-
+		
+		printf("test %i: ", test_number);
+		test_number++;
 						pf = printf("% ++d\n", -42);
 		printf("%i\n", pf);
 
+		printf("test %i: ", test_number);
+		test_number++;
 				pf = printf("% ++d\n", -42);
 		printf("%i\n", pf);
-
+		
+		printf("test %i: ", test_number);
+		test_number++;
 						pf = printf("% ++d\n", -42);
 		printf("%i\n", pf);
 
+		printf("test %i: ", test_number);
+		test_number++;
 				pf = printf("% ++d\n", -42);
 		printf("%i\n", pf);
-
+		
+		printf("test %i: ", test_number);
+		test_number++;
 						pf = printf("% ++d\n", -42);
 		printf("%i\n", pf);
 
+		printf("test %i: ", test_number);
+		test_number++;
 				pf = printf("% ++d\n", -42);
 		printf("%i\n", pf);
-
+		
+		printf("test %i: ", test_number);
+		test_number++;
 						pf = printf("% ++d\n", -42);
 		printf("%i\n", pf);
 
+		printf("test %i: ", test_number);
+		test_number++;
 				pf = printf("% ++d\n", -42);
 		printf("%i\n", pf);
-
+		
 		
 	}
 	return(1);

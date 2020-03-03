@@ -55,6 +55,8 @@ int			print_c(t_tags *command, va_list *source)
 	char	aquired;
 	int 	returnable;
 	
+	aquired = '\0';
+	returnable = 0;
 	if (command->specifier == '%')
 		aquired = '%';
 	else

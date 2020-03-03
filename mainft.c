@@ -19,6 +19,20 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		//pf = printf("%%\n");
+		ft = ft_printf("%5");
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		//pf = printf("%%\n");
+		ft = ft_printf("%5");
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+		
+		//pf = printf("%%\n");
 		ft = ft_printf("%%\n");
 		//ft_putnbr(pf);
 		//ft_putchar('\n');

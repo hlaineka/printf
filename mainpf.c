@@ -18,6 +18,14 @@ int		main(int argc, char **argv)
 	c = 'c';
 	if (argc == 2)
 	{
+		pf = printf("%5");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
+
+		pf = printf("%5");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
+		
 		pf = printf("%%\n");
 		//ft = ft_printf("%%\n");
 		printf("%i\n", pf);

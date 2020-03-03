@@ -56,20 +56,24 @@ char		*ft_itoa_hexa(unsigned long long int n, t_tags *command)
 				str[w--] = ((n % base) - 10 + 'a');
 			n = n / base;
 		}
-		str[w] = n + '0';
+		if (n <= 9)
+			str[w--] = n + '0';
+		else
+			str[w--] = n - 10 + 'a';
 		return (str);
 	}
 	return (NULL);
 }
 
-
 static char	*hexa_width(char *string, int width, t_tags *command)
 {
 	char	*returnable;
-	
+	int		i;
+
+	i = 0;
 	if ((int)ft_strlen(string) < width)
 	{
-		if(command->flag_zero && !command->flag_minus)
+		if (command->flag_zero && !command->flag_minus && command->precision == -1)
 			returnable = ft_strset('0', width);
 		else
 			returnable = ft_strset(' ', width);
@@ -77,7 +81,6 @@ static char	*hexa_width(char *string, int width, t_tags *command)
 			ft_strpaste(returnable, string);
 		else
 			ft_strpaste(&returnable[width - ft_strlen(string)], string);
-		returnable[width] = '\0';
 	}
 	else
 		returnable = ft_strdup(string);
@@ -85,16 +88,16 @@ static char	*hexa_width(char *string, int width, t_tags *command)
 	return(returnable);
 }
 
-static char	*hexa_precision(char *string, int precision)
+static char	*hexa_precision(char *string, t_tags *command)
 {
 	char	*returnable;
-
-	if (ft_strequ(string, "0"))
+	 
+	if (ft_strequ(string, "0") && command->precision == 0)
 		returnable = ft_strnew(0);
-	else if ((int)ft_strlen(string) < precision)
+	else if ((int)ft_strlen(string) <= command->precision)
 	{
-		returnable = ft_strset('0', precision);
-		ft_strpaste(&returnable[precision - ft_strlen(string)], string);
+		returnable = ft_strset('0', command->precision);
+		ft_strpaste(&returnable[ft_strlen(returnable) - ft_strlen(string)], string);
 	}
 	else
 		returnable = ft_strdup(string);
@@ -143,7 +146,7 @@ static char	*hexa_upperalpha(char *string)
 static char *hexa_editor(char *printable, t_tags *command)
 {
 	if (command->precision != -1)
-		printable = hexa_precision(printable, command->precision);
+		printable = hexa_precision(printable, command);
 	if (command->flag_hash)
 		printable = hexa_hash(printable, command);
 	if (command->width != -1)

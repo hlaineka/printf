@@ -41,6 +41,7 @@ typedef struct	s_tags
 	int			length_l;
 	int			length_ll;
 	int			length_L;
+	int			empty;
 }				t_tags;
 
 int 		ft_printf(const char *format, ...);

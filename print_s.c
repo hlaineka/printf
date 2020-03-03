@@ -60,12 +60,10 @@ int			print_s(t_tags *command, va_list *source)
 	char	*printable;
 	char	*aquired;
 
+	aquired = NULL;
 	aquired = va_arg(*source, char*);
 	if (aquired == NULL)
-	{
-		ft_putstr("(null)");
-		return(6);
-	}
+		aquired = ft_strdup("(null)");
 	printable = ft_strdup(aquired);
 	printable = string_editor(printable, command);
 	ft_putstr(printable);

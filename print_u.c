@@ -65,19 +65,27 @@ char		*ft_itoa_uint(unsigned long long int n, t_tags *command)
 static char	*uint_width(char *string, int width, t_tags *command)
 {
 	char	*returnable;
-	
+	int		i;
+
+	i = 0;
 	if ((int)ft_strlen(string) < width)
 	{
-		if (command->flag_zero)
-		{	
+		if (command->flag_zero && !command->flag_minus && command->precision == -1)
 			returnable = ft_strset('0', width);
-			if (!ft_isdigit(string[0]))
-				returnable = ft_char_str_join(string[0], returnable);
-		}
 		else
 			returnable = ft_strset(' ', width);
 		if(command->flag_minus)
 			ft_strpaste(returnable, string);
+		else if (command->flag_zero)
+		{
+			ft_strpaste_digits(&returnable[width - ft_strlen(string)], string);
+			while (returnable[i] == ' ')
+					i++;
+			if (i > 0)
+				i--;
+			if (command->positive_value && command->flag_plus)
+				returnable[i] = '+';
+		}
 		else
 			ft_strpaste(&returnable[width - ft_strlen(string)], string);
 	}
@@ -91,12 +99,16 @@ static char	*uint_precision(char *string, t_tags *command)
 {
 	char	*returnable;
 	 
-	if ((int)ft_strlen(string) < command->precision)
+	if (ft_strequ(string, "0") && command->precision == 0)
+		returnable = ft_strnew(0);
+	else if (ft_strequ(string, "+0") && command->precision == 0)
+		returnable = ft_strdup("+");
+	else if ((int)ft_strlen(string) <= command->precision)
 	{
 		returnable = ft_strset('0', command->precision);
+		ft_strpaste_digits(&returnable[ft_strlen(returnable) - ft_strlen(string)], string);
 		if (!ft_isdigit(string[0]))
 			returnable = ft_char_str_join(string[0], returnable);
-		ft_strpaste_digits(&returnable[ft_strlen(returnable) - ft_strlen(string)], string);
 	}
 	else
 		returnable = ft_strdup(string);

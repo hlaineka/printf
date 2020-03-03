@@ -13,8 +13,13 @@ char		*ft_itoa_float(long double n)
 	int				i;
 
 	number = n;
-	i = 1;
 	str1 = ft_itoa_base(number, 10, TRUE);
+	if (n < 0)
+	{
+		n = n * -1;
+		number = number * -1;
+	}
+	i = 1;
 	if (NULL != (str2 = (char*)malloc(sizeof(char) * 20)))
 	{
 		str2[20] = '\0';

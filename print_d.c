@@ -16,10 +16,12 @@
 static char	*int_width(char *string, int width, t_tags *command)
 {
 	char	*returnable;
-	
+	int		i;
+
+	i = 0;
 	if ((int)ft_strlen(string) < width)
 	{
-		if (command->flag_zero && (!command->flag_minus || string[0] == '0'))
+		if (command->flag_zero && !command->flag_minus && command->precision == -1)
 			returnable = ft_strset('0', width);
 		else
 			returnable = ft_strset(' ', width);
@@ -28,10 +30,14 @@ static char	*int_width(char *string, int width, t_tags *command)
 		else if (command->flag_zero)
 		{
 			ft_strpaste_digits(&returnable[width - ft_strlen(string)], string);
+			while (returnable[i] == ' ')
+					i++;
+			if (i > 0)
+				i--;
 			if (!command->positive_value)
-				returnable[0] = '-';
+				returnable[i] = '-';
 			if (command->positive_value && command->flag_plus)
-				returnable[0] = '+';
+				returnable[i] = '+';
 		}
 		else
 			ft_strpaste(&returnable[width - ft_strlen(string)], string);
@@ -46,8 +52,10 @@ static char	*int_precision(char *string, t_tags *command)
 {
 	char	*returnable;
 	 
-	if (ft_strequ(string, "0"))
+	if (ft_strequ(string, "0") && command->precision == 0)
 		returnable = ft_strnew(0);
+	else if (ft_strequ(string, "+0") && command->precision == 0)
+		returnable = ft_strdup("+");
 	else if ((int)ft_strlen(string) <= command->precision)
 	{
 		returnable = ft_strset('0', command->precision);

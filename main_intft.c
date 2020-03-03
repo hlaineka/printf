@@ -335,46 +335,148 @@ int		main(int argc, char **argv)
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-			ft = ft_printf("%-5.10o", 2500);
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%08.5i", 34);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%0-10.5i", -216);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%08.3d", -8473);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%08.5u", 34);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		//55
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%08.5u", 0);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%08.3u", 8375);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%0-8.5u", 34);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%lu", 22337203685477);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%llu", 22337203685477);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		//60
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%lu", 22337203685477ul);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%37llu", 522337203685470ull);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%.0u", 0);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%5.0u", 0);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%-5.u", 0);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		ft_printf("test %i: ", test_number);
+		test_number++;
 						ft = ft_printf("% ++d\n", -42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
+		ft_printf("test %i: ", test_number);
+		test_number++;
 				ft = ft_printf("% ++d\n", -42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
+		ft_printf("test %i: ", test_number);
+		test_number++;
 						ft = ft_printf("% ++d\n", -42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
+		ft_printf("test %i: ", test_number);
+		test_number++;
 				ft = ft_printf("% ++d\n", -42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
+		ft_printf("test %i: ", test_number);
+		test_number++;
 						ft = ft_printf("% ++d\n", -42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
+		ft_printf("test %i: ", test_number);
+		test_number++;
 				ft = ft_printf("% ++d\n", -42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
+		ft_printf("test %i: ", test_number);
+		test_number++;
 						ft = ft_printf("% ++d\n", -42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
+		ft_printf("test %i: ", test_number);
+		test_number++;
 				ft = ft_printf("% ++d\n", -42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
+		ft_printf("test %i: ", test_number);
+		test_number++;
 						ft = ft_printf("% ++d\n", -42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
+		ft_printf("test %i: ", test_number);
+		test_number++;
 				ft = ft_printf("% ++d\n", -42);
 		ft_putnbr(ft);
 		ft_putchar('\n');

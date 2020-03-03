@@ -20,8 +20,74 @@ int		main(int argc, char **argv)
 	num = 10.235685345;
 	if (argc == 2)
 	{
-		ft_printf("%5u", 4294967294);
+		//pf = printf("%%\n");
+		ft = ft_printf("%08.5u", 34);
+		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+		
+		pf = printf("%08.5u", 34);
+		printf("\n");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
+		
+		/*
+		//pf = printf("%%\n");
+		ft = ft_printf("%08.5i", 34);
+		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+		
+		pf = printf("%08.5i", 34);
+		printf("\n");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
 
+		//pf = printf("%%\n");
+		ft = ft_printf("%0-10.5i", -216);
+		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+		
+		pf = printf("%0-10.5i", -216);
+		printf("\n");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
+
+		//pf = printf("%%\n");
+		ft = ft_printf("%08.3d", -8473);
+		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+		
+		pf = printf("%08.3d", -8473);
+		printf("\n");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
+		
+		//pf = printf("%%\n");
+		ft = ft_printf("testi ilman typea %5");
+		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+		
+		pf = printf("testi ilman typea %5");
+		printf("\n");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
+		
+		//ft_printf("%5u", 4294967294);
+		*/
 		
 		//ft_printf("%f\n", 0.0004);
 		//printf("%f\n", 0.0004);

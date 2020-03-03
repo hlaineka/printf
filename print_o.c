@@ -13,7 +13,7 @@
 
 #include "ft_printf.h"
 
-static char	*octal_width(char *string, int width, t_tags *command)
+/*static char	*octal_width(char *string, int width, t_tags *command)
 {
 	char	*returnable;
 	
@@ -50,6 +50,47 @@ static char	*octal_precision(char *string, int precision)
 	free(string);
 	return(returnable);
 	
+}*/
+
+static char	*octal_width(char *string, int width, t_tags *command)
+{
+	char	*returnable;
+	int		i;
+
+	i = 0;
+	if ((int)ft_strlen(string) < width)
+	{
+		if (command->flag_zero && !command->flag_minus && command->precision == -1)
+			returnable = ft_strset('0', width);
+		else
+			returnable = ft_strset(' ', width);
+		if(command->flag_minus)
+			ft_strpaste(returnable, string);
+		else
+			ft_strpaste(&returnable[width - ft_strlen(string)], string);
+	}
+	else
+		returnable = ft_strdup(string);
+	free(string);
+	return(returnable);
+}
+
+static char	*octal_precision(char *string, t_tags *command)
+{
+	char	*returnable;
+	 
+	if (ft_strequ(string, "0") && command->precision == 0)
+		returnable = ft_strnew(0);
+	else if ((int)ft_strlen(string) <= command->precision)
+	{
+		returnable = ft_strset('0', command->precision);
+		ft_strpaste(&returnable[ft_strlen(returnable) - ft_strlen(string)], string);
+	}
+	else
+		returnable = ft_strdup(string);
+	free(string);
+	return(returnable);
+	
 }
 
 static char	*octal_hash(char *string, t_tags *command)
@@ -74,7 +115,7 @@ static char	*octal_hash(char *string, t_tags *command)
 static char *octal_editor(char *printable, t_tags *command)
 {
 	if (command->precision != -1)
-		printable = octal_precision(printable, command->precision);
+		printable = octal_precision(printable, command);
 	if (command->flag_hash)
 		printable = octal_hash(printable, command);
 	if (command->width != -1)
