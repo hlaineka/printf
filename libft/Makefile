@@ -25,7 +25,7 @@ ft_define_length.c  ft_strequ.c ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim
 ft_strsplit.c ft_addstr.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c \
 ft_lstiter.c ft_lstmap.c ft_strpaste.c ft_strset.c get_next_line.c \
 ft_str_realloc.c ft_dynamic_string.c ft_strjoin_frees2.c \
-ft_strpaste_digits.c ft_char_str_join.c ft_itoa_float.c ft_strsub_freestr.c
+ft_strpaste_digits.c ft_char_str_join.c ft_strsub_freestr.c
  
 OSRC = $(SRC:.c=.o)
 

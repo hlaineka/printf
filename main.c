@@ -20,7 +20,20 @@ int		main(int argc, char **argv)
 	num = 10.235685345;
 	if (argc == 2)
 	{
-		//pf = printf("%%\n");
+		pf = printf("%%\n");
+		ft = ft_printf("%f", -3.85);
+		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+		
+		pf = printf("%f", -3.85);
+		printf("\n");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
+		
+		/*//pf = printf("%%\n");
 		ft = ft_printf("%08.5u", 34);
 		ft_putchar('\n');
 		//ft_putnbr(pf);
@@ -33,7 +46,7 @@ int		main(int argc, char **argv)
 		//ft = ft_printf("%%\n");
 		printf("%i\n", pf);
 		
-		/*
+		
 		//pf = printf("%%\n");
 		ft = ft_printf("%08.5i", 34);
 		ft_putchar('\n');

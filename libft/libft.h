@@ -112,7 +112,7 @@ char				*ft_itoa_base(long long int n, long long int base, int signed);
 char				*ft_strjoin_frees2(char *s1, char *s2);
 void				ft_strpaste_digits(char *dest, char *src);
 char				*ft_char_str_join(char c, char *s1);
-char				*ft_itoa_float(long double n);
+//char				*ft_itoa_float(long double n, t_tags *command);
 char				*ft_strsub_freestr(char *s, unsigned int start, size_t len);
 
 #endif

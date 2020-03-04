@@ -12,7 +12,6 @@
 
 #include "ft_printf.h"
 
-
 static char	*int_width(char *string, int width, t_tags *command)
 {
 	char	*returnable;

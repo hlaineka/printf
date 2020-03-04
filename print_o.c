@@ -13,45 +13,6 @@
 
 #include "ft_printf.h"
 
-/*static char	*octal_width(char *string, int width, t_tags *command)
-{
-	char	*returnable;
-	
-	if ((int)ft_strlen(string) < width)
-	{
-		if(command->flag_zero && command->precision != 0 && !command->flag_minus)
-			returnable = ft_strset('0', width);
-		else
-			returnable = ft_strset(' ', width);
-		if(command->flag_minus)
-			ft_strpaste(returnable, string);
-		else
-			ft_strpaste(&returnable[width - ft_strlen(string)], string);
-	}
-	else
-		returnable = ft_strdup(string);
-	free(string);
-	return(returnable);
-}
-
-static char	*octal_precision(char *string, int precision)
-{
-	char	*returnable;
-
-	if (ft_strequ(string, "0"))
-		returnable = ft_strnew(0);
-	else if ((int)ft_strlen(string) < precision)
-	{
-		returnable = ft_strset('0', precision);
-		ft_strpaste(&returnable[precision - ft_strlen(string)], string);
-	}
-	else
-		returnable = ft_strdup(string);
-	free(string);
-	return(returnable);
-	
-}*/
-
 static char	*octal_width(char *string, int width, t_tags *command)
 {
 	char	*returnable;
