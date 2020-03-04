@@ -66,10 +66,10 @@ static char	*float_width(char *string, int width, t_tags *command)
 		else
 		{
 			ft_strpaste(&returnable[width - ft_strlen(string)], string);
-			if (!command->positive_value)
-				returnable = ft_strjoin_frees2("-", returnable);
-			if (command->positive_value && command->flag_plus)
-				returnable = ft_strjoin_frees2("+", returnable);
+			//if (!command->positive_value)
+			//	returnable = ft_strjoin_frees2("-", returnable);
+			//if (command->positive_value && command->flag_plus)
+			//	returnable = ft_strjoin_frees2("+", returnable);
 		}
 	}
 	else
