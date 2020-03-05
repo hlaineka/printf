@@ -59,13 +59,17 @@ int			print_s(t_tags *command, va_list *source)
 {
 	char	*printable;
 	char	*aquired;
+	int		returnable;
 
 	aquired = NULL;
 	aquired = va_arg(*source, char*);
 	if (aquired == NULL)
-		aquired = ft_strdup("(null)");
-	printable = ft_strdup(aquired);
+		printable = ft_strdup("(null)");
+	else
+		printable = ft_strdup(aquired);
 	printable = string_editor(printable, command);
 	ft_putstr(printable);
-	return(ft_strlen(printable));
+	returnable = ft_strlen(printable);
+	free(printable);
+	return(returnable);
 }

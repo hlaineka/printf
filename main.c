@@ -21,6 +21,58 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		pf = printf("%%\n");
+		ft = ft_printf("%5");
+		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+		
+		pf = printf("%5");
+		printf("\n");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
+		
+		pf = printf("%%\n");
+		ft = ft_printf("%05");
+		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+		
+		pf = printf("%05");
+		printf("\n");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
+		
+		pf = printf("%%\n");
+		ft = ft_printf("%-05");
+		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+		
+		pf = printf("%-05");
+		printf("\n");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
+
+				pf = printf("%%\n");
+		ft = ft_printf("%-5");
+		ft_putchar('\n');
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+		
+		pf = printf("%-5");
+		printf("\n");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
+
+		/*pf = printf("%%\n");
 		ft = ft_printf("%f", -3.85);
 		ft_putchar('\n');
 		//ft_putnbr(pf);
@@ -33,7 +85,7 @@ int		main(int argc, char **argv)
 		//ft = ft_printf("%%\n");
 		printf("%i\n", pf);
 		
-		/*//pf = printf("%%\n");
+		//pf = printf("%%\n");
 		ft = ft_printf("%08.5u", 34);
 		ft_putchar('\n');
 		//ft_putnbr(pf);

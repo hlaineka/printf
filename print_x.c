@@ -115,7 +115,8 @@ static char	*hexa_hash(char *string, t_tags *command)
 	else if (command->flag_zero && command->width != -1)
 	{	
 		returnable = hexa_width(string, (command->width - 2), command);
-		returnable = ft_strjoin("0x", returnable);
+		returnable = ft_strjoin_frees2("0x", returnable);
+		//free(string);
 		return(returnable);
 	}
 	else
@@ -184,10 +185,13 @@ int			print_x(t_tags *command, va_list *source)
 {
 	unsigned long long int	hexa;
 	char					*printable;
+	int 					returnable;
 	
 	hexa = read_hexa(command, source);
 	printable = ft_itoa_hexa(hexa, command);
 	printable = hexa_editor(printable, command);
 	ft_putstr(printable);
-	return(ft_strlen(printable));
+	returnable = ft_strlen(printable);
+	free(printable);
+	return(returnable);
 }

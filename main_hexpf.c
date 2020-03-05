@@ -326,6 +326,15 @@ int		main(int argc, char **argv)
 		pf = printf("test: %.10o\n", 42);
 		printf("%i\n", pf);
 
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%#X\\n", 1000);
+		printf("%i\n", pf);
+
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%x\\n", 505);
+		printf("%i\n", pf);
 	}
 	return(1);
 }

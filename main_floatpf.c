@@ -56,34 +56,34 @@ int		main(int argc, char **argv)
 		pf = printf("%f", -0.000001);
 		printf("%i\n", pf);
 
-				printf("test %i: ", test_number);
+		printf("test %i: ", test_number);
 		test_number++;
-		pf = printf("%f", -3.85);
+		pf = printf("%.3f", -0.00032);
 		printf("%i\n", pf);
 
-				printf("test %i: ", test_number);
+		printf("test %i: ", test_number);
 		test_number++;
-		pf = printf("%f", 7.5);
+		pf = printf("%#.0f", 7.4);
 		printf("%i\n", pf);
 
-				printf("test %i: ", test_number);
+		printf("test %i: ", test_number);
 		test_number++;
-		pf = printf("%f", -3.85);
+		pf = printf("%#.0f", -7.4);
 		printf("%i\n", pf);
 
-				printf("test %i: ", test_number);
+		printf("test %i: ", test_number);
 		test_number++;
-		pf = printf("%f", 7.5);
+		pf = printf("%.0f", 1.0);
 		printf("%i\n", pf);
 
-				printf("test %i: ", test_number);
+		printf("test %i: ", test_number);
 		test_number++;
-		pf = printf("%f", -3.85);
+		pf = printf("%Lf", -985.765426499l);
 		printf("%i\n", pf);
 
-				printf("test %i: ", test_number);
+		printf("test %i: ", test_number);
 		test_number++;
-		pf = printf("%f", 7.5);
+		pf = printf("%Lf", 0.08942555l);
 		printf("%i\n", pf);
 
 				printf("test %i: ", test_number);

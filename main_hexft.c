@@ -382,6 +382,18 @@ int		main(int argc, char **argv)
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%#X\\n", 1000);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%x\\n", 505);
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
 	}
 	return(1);
 }

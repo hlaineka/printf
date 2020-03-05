@@ -112,10 +112,13 @@ int			print_o(t_tags *command, va_list *source)
 {
 	unsigned long long int	octal;
 	char					*printable;
+	int						returnable;
 	  
 	octal = read_octal(command, source);
 	printable = ft_itoa_base(octal, 8, FALSE);
 	printable = octal_editor(printable, command);
 	ft_putstr(printable);
-	return(ft_strlen(printable));
+	returnable = ft_strlen(printable);
+	free(printable);
+	return(returnable);
 }

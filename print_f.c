@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-char		*ft_itoa_float(long double n, t_tags *command)
+char		*ft_itoa_float(long double n)
 {
 	char			*str1;
 	char			*str2;
@@ -11,17 +11,17 @@ char		*ft_itoa_float(long double n, t_tags *command)
 
 	number = n;
 	str1 = ft_itoa_base(number, 10, TRUE);
+	if (str1[0] == '0' && n < 0)
+		str1 = ft_strjoin_frees2("-", str1);
 	if (n < 0)
 	{
 		n = n * -1;
 		number = number * -1;
 	}
 	i = 1;
-	if (NULL != (str2 = (char*)malloc(sizeof(char) * 20)))
+	if (NULL != (str2 = ft_strnew(20)))
 	{
-		str2[20] = '\0';
-		if (command->precision != 0)
-			str2[0] = '.';
+		str2[0] = '.';
 		n = n - number;
 		while (i < 20)
 		{
@@ -64,13 +64,7 @@ static char	*float_width(char *string, int width, t_tags *command)
 				returnable[i] = '+';
 		}
 		else
-		{
 			ft_strpaste(&returnable[width - ft_strlen(string)], string);
-			//if (!command->positive_value)
-			//	returnable = ft_strjoin_frees2("-", returnable);
-			//if (command->positive_value && command->flag_plus)
-			//	returnable = ft_strjoin_frees2("+", returnable);
-		}
 	}
 	else
 		returnable = ft_strdup(string);
@@ -81,10 +75,8 @@ static char	*float_width(char *string, int width, t_tags *command)
 static char	*float_precision(char *string, t_tags *command)
 {
 	char	*returnable;
-	 
-	if (ft_strequ(string, "0") && command->precision == 0)
-		returnable = ft_strnew(0);
-	else if (ft_strequ(string, "+0") && command->precision == 0)
+
+	if (ft_strequ(string, "+0") && command->precision == 0)
 		returnable = ft_strdup("+");
 	else if ((int)ft_strlen(string) <= command->precision)
 	{
@@ -123,9 +115,7 @@ char		*ft_trim(char *str, t_tags *command)
 	int		w;
 	char	*returnable;
 
-	if (command->length_L)
-		i = 18;
-	else if (command->precision != -1)
+	if (command->precision != -1)
 		i = command->precision;
 	else
 		i = 6;
@@ -133,6 +123,8 @@ char		*ft_trim(char *str, t_tags *command)
 	while (str[w] != '.')
 		w++;
 	i = i + w + 1;
+	if (command->precision == 0 && !command->flag_hash)
+		i--;
 	while (str[w] != '\0' && w < i)
 		w++;
 	returnable = ft_str_realloc(str, 0, w);
@@ -147,9 +139,7 @@ long double		ft_round(long double number, t_tags *command)
 	long double	multiplier;
 
 	multiplier = .5;	
-	if (command->length_L)
-		i = 18;
-	else if (command->precision != -1)
+	if (command->precision != -1)
 		i = command->precision;
 	else
 		i = 6;
@@ -162,7 +152,6 @@ long double		ft_round(long double number, t_tags *command)
 		returnable = number + multiplier;
 	else
 		returnable = number - multiplier;
-	//ft_putnbr(returnable);
 	return(returnable);
 }
 
@@ -195,13 +184,16 @@ int			print_f(t_tags *command, va_list *source)
 {
 	char		*printable;
 	long double	aquired;
+	int			returnable;
 
 	aquired = read_float(command, source);
 	if (aquired >= 0)
 		command->positive_value = TRUE;
 	aquired = ft_round(aquired, command);
-	printable = ft_itoa_float(aquired, command);
+	printable = ft_itoa_float(aquired);
 	printable = float_editor(printable, command);
+	returnable = ft_strlen(printable);
 	ft_putstr(printable);
-	return(ft_strlen(printable));
+	free(printable);
+	return(returnable);
 }

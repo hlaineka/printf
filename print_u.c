@@ -170,10 +170,13 @@ int			print_u(t_tags *command, va_list *source)
 {
 	char	*printable;
 	int		aquired;
+	int		returnable;
 
 	aquired = read_uint(command, source);
 	printable = ft_itoa_uint(aquired, command);
 	printable = uint_editor(printable, command, aquired);
 	ft_putstr(printable);
-	return(ft_strlen(printable));
+	returnable = ft_strlen(printable);
+	free(printable);
+	return(returnable);
 }

@@ -45,4 +45,14 @@ echo -e "\n\n< first printf"
 echo -e "---"
 echo -e "> yours\n\n"
 diff -a intpf.txt intft.txt
-echo "ints, doubles and unsigned checked!"
+echo "ints, doubles and unsigned checked! Press enter to check floats:"
+read text
+make main_float > bin.txt
+echo -e "\n\ntime for ft_printf:"
+time ./floatft asdfadf > floatft.txt
+echo -e "\n\ntime for printf:"
+time ./floatpf asdfadf > floatpf.txt
+echo -e "\n\n< first printf"
+echo -e "---"
+echo -e "> yours\n\n"
+diff -a floatpf.txt floatft.txt

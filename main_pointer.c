@@ -31,4 +31,7 @@ int		main(int argc, char **argv)
 		ft_putnbr(ft);
 		ft_putchar('\n');
 	}
+	//free(test3);
+	//free(test4);
+	while (1);
 }

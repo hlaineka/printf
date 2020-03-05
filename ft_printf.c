@@ -45,43 +45,6 @@ static int	is_specifier(char c)
 	return (FALSE);
 }
 
-/*static int	is_attribute(char c, int i)
-{
-	if (i == 1 && c == ' ')
-		return (TRUE);
-	if (c == '0' || c == '1' || c == '2'|| c == '3'|| c == '4'|| c == '5'||
-	c == '6'|| c == '7'|| c == '8'|| c == '9'|| c == '.' || c == 'h' || c == 'f' 
-	|| c == 'l' || c == 'L' || c == '#' || c == '0' || c == '-' || c == '+')
-		return (TRUE);
-	return (FALSE);
-}
-
-static char	*ft_addchar(char **source, char c)
-{
-	char	*returnable;
-
-	if (!*source)
-	{
-		//ft_putstr("inside first if\n");
-		if ((returnable = (char*)malloc(sizeof(char) * 2)))
-		{
-			returnable[0] = c;
-			returnable[1] = '\0';
-			return(returnable);
-		}
-		return (NULL);
-	}
-	if ((returnable = (char*)malloc(sizeof(char) * (ft_strlen(*source) + 2))))
-	{
-		//ft_putstr("inside second if\n");
-		returnable = ft_strcpy(returnable, *source);
-		returnable[ft_strlen(*source)] = c;
-		returnable[ft_strlen(*source) + 1] = '\0';
-		return(returnable);
-	}
-	return(NULL);
-}
-*/
 static void	initialize_command(t_tags *command)
 {
 	command->specifier = '\0';
@@ -220,8 +183,12 @@ int 		ft_printf(const char *format, ...)
 		{
 			w = check_command(&format[i], command);
 			i = i + w;
-			if (!command->empty)
-				printed = printed + selector(command, &source);
+			if (command->empty)
+			{
+				free(command);
+				return(printed);
+			}
+			printed = printed + selector(command, &source);
 			initialize_command(command);
 		}
 		else

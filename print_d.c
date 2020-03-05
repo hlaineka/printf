@@ -121,12 +121,15 @@ int			print_d(t_tags *command, va_list *source)
 {
 	char			*printable;
 	long long int	aquired;
+	int				returnable;
 
 	aquired = read_int(command, source);
 	if (aquired >= 0)
 		command->positive_value = TRUE;
 	printable = ft_itoa_base(aquired, 10, TRUE);
 	printable = int_editor(printable, command);
+	returnable = ft_strlen(printable);
 	ft_putstr(printable);
-	return(ft_strlen(printable));
+	free(printable);
+	return(returnable);
 }

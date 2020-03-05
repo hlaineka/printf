@@ -12,7 +12,7 @@ test 6: 0x11d2, 0x34a9d1
 17
 test 7:   0x11d2, 0x34a9d1
 19
-test 8: ?fffffd6
+test 8: ffffffd6
 9
 test 9: 100000000
 10
@@ -50,7 +50,7 @@ test 25: 0X11D2, 0X34A9D1
 17
 test 26:   0X11D2, 0X34A9D1
 19
-test 27: ?FFFFFD6
+test 27: FFFFFFD6
 9
 test 28: 100000000
 10

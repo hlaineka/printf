@@ -22,7 +22,15 @@ int		main(int argc, char **argv)
 		//ft = ft_printf("%%\n");
 		printf("%i\n", pf);
 
-		pf = printf("%5");
+		pf = printf("%05");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
+
+		pf = printf("%-05");
+		//ft = ft_printf("%%\n");
+		printf("%i\n", pf);
+
+		pf = printf("%-5");
 		//ft = ft_printf("%%\n");
 		printf("%i\n", pf);
 		
