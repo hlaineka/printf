@@ -25,13 +25,11 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		pf = printf("%5p, %p\n", test3, test4);
-		ft = ft_printf("%5p, %p\n", test3, test4);
 		ft_putnbr(pf);
 		ft_putchar('\n');
-		ft_putnbr(ft);
-		ft_putchar('\n');
+		ft = ft_printf("%5p, %p\n", test3, test4);
+		printf("%i\n", ft);
 	}
 	//free(test3);
 	//free(test4);
-	while (1);
 }

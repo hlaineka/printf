@@ -356,22 +356,22 @@ int		main(int argc, char **argv)
 		
 		printf("test %i: ", test_number);
 		test_number++;
-						pf = printf("% ++d\n", -42);
+		pf = printf("% u", 4294967295);
 		printf("%i\n", pf);
 
 		printf("test %i: ", test_number);
 		test_number++;
-				pf = printf("% ++d\n", -42);
+		pf = printf("%lu",22337203685477);
 		printf("%i\n", pf);
 		
 		printf("test %i: ", test_number);
 		test_number++;
-						pf = printf("% ++d\n", -42);
+		pf = printf("%lu",223372036854762);
 		printf("%i\n", pf);
 
 		printf("test %i: ", test_number);
 		test_number++;
-				pf = printf("% ++d\n", -42);
+		pf = printf("{% 03d}", 0);
 		printf("%i\n", pf);
 		
 		printf("test %i: ", test_number);

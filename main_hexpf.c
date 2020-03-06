@@ -335,6 +335,11 @@ int		main(int argc, char **argv)
 		test_number++;
 		pf = printf("%x\\n", 505);
 		printf("%i\n", pf);
+
+		printf("test %i: ", test_number);
+		test_number++;
+		pf = printf("%#.3o", 1);
+		printf("%i\n", pf);
 	}
 	return(1);
 }

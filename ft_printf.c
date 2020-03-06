@@ -156,10 +156,10 @@ static int	check_command(const char *format, t_tags *command)
 			set_length(command, format[w]);
 		w++;
 	}
-	if (format[w] != '\0' && is_specifier(format[w]))
-		command->specifier = format[w];
-	else
+	if (format[w] == '\0' || !is_specifier(format[w]))
 		command->empty = TRUE;
+	else
+		command->specifier = format[w];
 	return(w);
 }
 
@@ -179,7 +179,7 @@ int 		ft_printf(const char *format, ...)
 	va_start(source, format);
 	while (format[i] != '\0')
 	{
-		if (format[i] == '%' && format[i + 1] != '\0')
+		if (format[i] == '%')
 		{
 			w = check_command(&format[i], command);
 			i = i + w;

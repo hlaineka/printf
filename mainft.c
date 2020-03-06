@@ -19,6 +19,13 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		//pf = printf("%%\n");
+		ft = ft_printf("%");
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+		
+		//pf = printf("%%\n");
 		ft = ft_printf("%5");
 		//ft_putnbr(pf);
 		//ft_putchar('\n');
@@ -221,6 +228,13 @@ int		main(int argc, char **argv)
 
 		//pf = printf("null %c and text\n", 0);
 		ft = ft_printf("null %c and text\n", 0);
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		//pf = printf("null %c and text\n", 0);
+		ft = ft_printf("%4.15s", "42 is the answer");
 		//ft_putnbr(pf);
 		//ft_putchar('\n');
 		ft_putnbr(ft);

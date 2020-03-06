@@ -393,7 +393,12 @@ int		main(int argc, char **argv)
 		ft = ft_printf("%x\\n", 505);
 		ft_putnbr(ft);
 		ft_putchar('\n');
-
+		
+		ft_printf("test %i: ", test_number);
+		test_number++;
+		ft = ft_printf("%#.3o", 1);
+		ft_putnbr(ft);
+		ft_putchar('\n');
 	}
 	return(1);
 }

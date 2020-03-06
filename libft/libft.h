@@ -113,5 +113,6 @@ char				*ft_strjoin_frees2(char *s1, char *s2);
 void				ft_strpaste_digits(char *dest, char *src);
 char				*ft_char_str_join(char c, char *s1);
 char				*ft_strsub_freestr(char *s, unsigned int start, size_t len);
-
+char				*ft_itoa_uint(uintmax_t n, unsigned int	base);
+void				ft_strpaste_end(char *dest, char *src);
 #endif

@@ -157,7 +157,5 @@ int		main(int argc, char **argv)
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
-		while (1);
-
 	}
 }

@@ -66,6 +66,8 @@ static char	*octal_hash(char *string, t_tags *command)
 		returnable = ft_strjoin("0", returnable);
 		return(returnable);
 	}
+	else if (command->precision != -1 && string[0] == '0')
+		returnable = ft_strdup(string);
 	else
 		returnable = ft_strjoin("0", string);
 	free(string);
@@ -84,38 +86,28 @@ static char *octal_editor(char *printable, t_tags *command)
 	return(printable);
 }
 
-unsigned long long int	read_octal(t_tags *command, va_list *source)
+uintmax_t	read_octal(t_tags *command, va_list *source)
 {
-	unsigned long long int	returnable;
-	
 	if(command->length_hh)
-	{
-		returnable = va_arg(*source, int);
-		returnable = (unsigned char)returnable;
-	}
+		return(unsigned char)va_arg(*source, uintmax_t);
 	else if(command->length_h)
-	{	
-		returnable = va_arg(*source, int);
-		returnable = (unsigned short int)returnable;
-	}
+		return(unsigned short int)va_arg(*source, uintmax_t);
 	else if(command->length_l)
-		returnable = va_arg(*source, unsigned long int);
+		return(unsigned long int)va_arg(*source, uintmax_t);
 	else if(command->length_ll)
-		returnable = va_arg(*source, unsigned long long int);
+		return(unsigned long long int)va_arg(*source, uintmax_t);
 	else
-		returnable = va_arg(*source, int);
-	returnable = (unsigned long long int)returnable;
-	return(returnable);
+		return(unsigned int)va_arg(*source, uintmax_t);
 }
 
 int			print_o(t_tags *command, va_list *source)
 {
-	unsigned long long int	octal;
-	char					*printable;
-	int						returnable;
+	uintmax_t	octal;
+	char		*printable;
+	int			returnable;
 	  
 	octal = read_octal(command, source);
-	printable = ft_itoa_base(octal, 8, FALSE);
+	printable = ft_itoa_uint(octal, 8);
 	printable = octal_editor(printable, command);
 	ft_putstr(printable);
 	returnable = ft_strlen(printable);

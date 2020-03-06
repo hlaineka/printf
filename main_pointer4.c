@@ -24,10 +24,10 @@ int		main(int argc, char **argv)
 	test_number = 1;
 	if (argc == 2)
 	{
-		pf = printf("%30p, %p\n", 0, 0);
+		pf = printf("%.0p, %.p", test3, test4);
 		ft_putnbr(pf);
 		ft_putchar('\n');
-		ft = ft_printf("%30p, %p\n", 0, 0);
+		ft = ft_printf("%.0p, %.p", test3, test4);
 		printf("%i\n", ft);
 	}
 }

@@ -37,6 +37,8 @@ static char	*int_width(char *string, int width, t_tags *command)
 				returnable[i] = '-';
 			if (command->positive_value && command->flag_plus)
 				returnable[i] = '+';
+			if (command->positive_value && command->flag_space && i == 0)
+				returnable[i] = ' ';
 		}
 		else
 			ft_strpaste(&returnable[width - ft_strlen(string)], string);
@@ -69,17 +71,12 @@ static char	*int_precision(char *string, t_tags *command)
 	
 }
 
-char		*add_intspace(char *string, t_tags *command)
+char		*add_intspace(char *string)
 {
 	char	*returnable;
 
 	if (ft_isdigit(string[0]))
-	{	
-		if (command->flag_zero)
-			returnable = ft_strjoin_frees2("0", string);
-		else
 			returnable = ft_strjoin_frees2(" ", string);
-	}
 	else
 		return(string);
 	return(returnable);
@@ -90,10 +87,10 @@ static char *int_editor(char *printable, t_tags *command)
 {
 	if (command->flag_plus && command->positive_value)
 		printable = ft_strjoin_frees2("+", printable);
+	if (command->flag_space && command->positive_value)
+		printable = add_intspace(printable);
 	if (command->precision != -1)
 		printable = int_precision(printable, command);
-	if (command->flag_space && command->positive_value)
-		printable = add_intspace(printable, command);
 	if (command->width != -1)
 		printable = int_width(printable, command->width, command);
 	return(printable);

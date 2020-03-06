@@ -423,25 +423,25 @@ int		main(int argc, char **argv)
 
 		ft_printf("test %i: ", test_number);
 		test_number++;
-						ft = ft_printf("% ++d\n", -42);
+		ft = ft_printf("% u", 4294967295);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
 		ft_printf("test %i: ", test_number);
 		test_number++;
-				ft = ft_printf("% ++d\n", -42);
+		ft = ft_printf("%lu",22337203685477);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
 		ft_printf("test %i: ", test_number);
 		test_number++;
-						ft = ft_printf("% ++d\n", -42);
+		ft = ft_printf("%lu",223372036854762);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
 		ft_printf("test %i: ", test_number);
 		test_number++;
-				ft = ft_printf("% ++d\n", -42);
+		ft = ft_printf("{% 03d}", 0);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 

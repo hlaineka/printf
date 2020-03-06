@@ -13,55 +13,6 @@
 
 #include "ft_printf.h"
 
-
-int	ft_define_uint_length(unsigned long long int n)
-{
-	int 			i;
-	unsigned int	base;
-
-	base = 10;
-	i = 1;
-	while ((n / base) > 0)
-	{
-		i++;
-		n = n / base;
-	}
-	return (i);
-}
-
-char		*ft_itoa_uint(unsigned long long int n, t_tags *command)
-{
-	static char		*str;
-	int				w;
-	unsigned int	base;
-
-	base = 10;
-	if (command->length_hh)
-		n = (unsigned char)n;
-	else if (command->length_h)
-		n = (unsigned short int) n;
-	else if (command->length_l)
-		n = (unsigned long int) n;
-	else if (command->length_ll)
-		n = (unsigned long long int) n;
-	else
-		n = (unsigned int)n;
-	if (NULL != (str = (char*)malloc(sizeof(char) * (ft_define_uint_length(n) + 1))))
-	{
-		w = ft_define_uint_length(n) - 1;
-		str[w + 1] = ('\0');
-		while (n >= base)
-		{
-			str[w--] = ((n % base) + '0');
-			n = n / base;
-		}
-		str[w] = n + '0';
-		return (str);
-	}
-	return (NULL);
-}
-
-
 static char	*uint_width(char *string, int width, t_tags *command)
 {
 	char	*returnable;
@@ -117,24 +68,10 @@ static char	*uint_precision(char *string, t_tags *command)
 	
 }
 
-char		*add_uintspace(char *string)
-{
-	char	*returnable;
-
-	if (ft_isdigit(string[0]))
-		returnable = ft_strjoin_frees2(" ", string);
-	else
-		return(string);
-	return(returnable);
-	
-}
-
 static char *uint_editor(char *printable, t_tags *command, int original)
 {
 	if (command->flag_plus && original >= 0)
 		printable = ft_strjoin_frees2("+", printable);
-	if (command->flag_space)
-		printable = add_uintspace(printable);
 	if (command->precision != -1)
 		printable = uint_precision(printable, command);
 	if (command->width != -1)
@@ -142,38 +79,28 @@ static char *uint_editor(char *printable, t_tags *command, int original)
 	return(printable);
 }
 
-unsigned long long int	read_uint(t_tags *command, va_list *source)
+uintmax_t	read_uint(t_tags *command, va_list *source)
 {
-	unsigned long long int	returnable;
-	
 	if(command->length_hh)
-	{
-		returnable = va_arg(*source, unsigned int);
-		returnable = (unsigned char)returnable;
-	}
+		return(unsigned char)va_arg(*source, uintmax_t);
 	else if(command->length_h)
-	{	
-		returnable = va_arg(*source, unsigned int);
-		returnable = (unsigned short int)returnable;
-	}
+		return(unsigned short int)va_arg(*source, uintmax_t);
 	else if(command->length_l)
-		returnable = va_arg(*source, unsigned long int);
+		return(unsigned long int)va_arg(*source, uintmax_t);
 	else if(command->length_ll)
-		returnable = va_arg(*source, unsigned long long int);
+		return(unsigned long long int)va_arg(*source, uintmax_t);
 	else
-		returnable = va_arg(*source, unsigned int);
-	returnable = (unsigned long long int)returnable;
-	return(returnable);
+		return(unsigned int)va_arg(*source, uintmax_t);
 }
 
 int			print_u(t_tags *command, va_list *source)
 {
-	char	*printable;
-	int		aquired;
-	int		returnable;
+	char		*printable;
+	uintmax_t	aquired;
+	int			returnable;
 
 	aquired = read_uint(command, source);
-	printable = ft_itoa_uint(aquired, command);
+	printable = ft_itoa_uint(aquired, 10);
 	printable = uint_editor(printable, command, aquired);
 	ft_putstr(printable);
 	returnable = ft_strlen(printable);

@@ -35,13 +35,12 @@ static char	*string_precision(char *string, int precision)
 	char	*returnable;
 
 	if ((int)ft_strlen(string) > precision)
-	{
-		returnable = (char*)malloc(sizeof(char) * (precision + 1));
-		returnable = ft_strncpy(returnable, string, precision);
-	}
+		returnable = ft_str_realloc(string, 0, precision); 
 	else
+	{	
 		returnable = ft_strdup(string);
-	free(string);
+		free(string);
+	}
 	return(returnable);
 	
 }

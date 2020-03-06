@@ -10,17 +10,29 @@ diff -a stringpf.txt stringft.txt
 rm -rf bin.txt
 echo "string and char checked! Press enter to check pointers:"
 read text
-gcc main_pointer.c -o pointer libftprintf.a
+gcc main_pointer.c -o pointer libftprintf.a > bin.txt
 make clean > bin.txt
 ./pointer asdf
 rm -rf bin.txt
-gcc main_pointer2.c -o pointer2 libftprintf.a
+gcc main_pointer2.c -o pointer2 libftprintf.a > bin.txt
 make clean > bin.txt
-./pointer asdf
+./pointer2 asdf
 rm -rf bin.txt
-gcc main_pointer3.c -o pointer3 libftprintf.a
+gcc main_pointer3.c -o pointer3 libftprintf.a > bin.txt
 make clean > bin.txt
-./pointer asdf
+./pointer3 asdf
+rm -rf bin.txt
+gcc main_pointer4.c -o pointer4 libftprintf.a > bin.txt
+make clean > bin.txt
+./pointer4 asdf
+rm -rf bin.txt
+gcc main_pointer5.c -o pointer5 libftprintf.a > bin.txt
+make clean > bin.txt
+./pointer5 asdf
+rm -rf bin.txt
+gcc main_pointer6.c -o pointer6 libftprintf.a > bin.txt
+make clean > bin.txt
+./pointer6 asdf
 rm -rf bin.txt
 echo "pointers checked! Press enter to check hexas and octas:"
 read text
