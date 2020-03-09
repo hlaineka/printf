@@ -27,14 +27,14 @@ static int	ft_define_hexa_length(unsigned long long int n)
 	return (i);
 }
 
-char		*ft_itoa_hexa(unsigned long long int n, t_tags *command)
+char		*ft_itoa_hexa(uintmax_t n)
 {
-	static char				*str;
-	int						w;
-	unsigned long long int	base;
+	static char		*str;
+	int				w;
+	uintmax_t		base;
 
 	base = 16;
-	if (command->length_hh)
+	/*if (command->length_hh)
 		n = (unsigned char)n;
 	else if (command->length_h)
 		n = (unsigned short int) n;
@@ -43,7 +43,7 @@ char		*ft_itoa_hexa(unsigned long long int n, t_tags *command)
 	else if (command->length_ll)
 		n = (unsigned long long int) n;
 	else
-		n = (unsigned int)n;
+		n = (unsigned int)n;*/
 	if (NULL != (str = (char*)malloc(sizeof(char) * (ft_define_hexa_length(n) + 1))))
 	{
 		w = ft_define_hexa_length(n) - 1;
@@ -157,38 +157,28 @@ static char *hexa_editor(char *printable, t_tags *command)
 	return(printable);
 }
 
-unsigned long long int	read_hexa(t_tags *command, va_list *source)
+uintmax_t	read_hexa(t_tags *command, va_list *source)
 {
-	unsigned long long int	returnable;
-	
 	if(command->length_hh)
-	{
-		returnable = va_arg(*source, int);
-		returnable = (unsigned char)returnable;
-	}
+		return(unsigned char)va_arg(*source, uintmax_t);
 	else if(command->length_h)
-	{	
-		returnable = va_arg(*source, int);
-		returnable = (unsigned short int)returnable;
-	}
+		return(unsigned short int)va_arg(*source, uintmax_t);
 	else if(command->length_l)
-		returnable = va_arg(*source, unsigned long int);
+		return(unsigned long int)va_arg(*source, uintmax_t);
 	else if(command->length_ll)
-		returnable = va_arg(*source, unsigned long long int);
+		return(unsigned long long int)va_arg(*source, uintmax_t);
 	else
-		returnable = va_arg(*source, int);
-	returnable = (unsigned long long int)returnable;
-	return(returnable);
+		return(int)va_arg(*source, uintmax_t);
 }
 
 int			print_x(t_tags *command, va_list *source)
 {
-	unsigned long long int	hexa;
+	uintmax_t	hexa;
 	char					*printable;
 	int 					returnable;
 	
 	hexa = read_hexa(command, source);
-	printable = ft_itoa_hexa(hexa, command);
+	printable = ft_itoa_hexa(hexa);
 	printable = hexa_editor(printable, command);
 	ft_putstr(printable);
 	returnable = ft_strlen(printable);

@@ -200,6 +200,20 @@ int		main(int argc, char **argv)
 		//ft_putnbr(ft);
 		//ft_putchar('\n');
 
+		pf = printf("{%0c}", 0);
+		//ft = ft_printf("null %c and text\n", 0);
+		printf("%i\n", pf);
+		//ft_putnbr(ft);
+		//ft_putchar('\n');
+
+
+		pf = printf("{%*c}", 0, 0);
+		//ft = ft_printf("null %c and text\n", 0);
+		printf("%i\n", pf);
+		//ft_putnbr(ft);
+		//ft_putchar('\n');
+
+
 		//printf("% c\n", 0);
 		//ft_printf("% c\n", 0);
 		//ft_putchar('\n');

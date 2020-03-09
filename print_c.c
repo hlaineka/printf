@@ -36,7 +36,10 @@ static int	char_width(char printable, t_tags *command)
 		}
 		ft_putchar(printable);
 	}
-	return(command->width);
+	if (command->width == 0)
+		return(1);
+	else
+		return(command->width);
 }
 
 static int	char_editor(char printable, t_tags *command)

@@ -447,19 +447,19 @@ int		main(int argc, char **argv)
 
 		ft_printf("test %i: ", test_number);
 		test_number++;
-						ft = ft_printf("% ++d\n", -42);
+		ft = ft_printf("{%*3d}", 5, 0);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
 		ft_printf("test %i: ", test_number);
 		test_number++;
-				ft = ft_printf("% ++d\n", -42);
+		ft = ft_printf("{%*d}", -5, 42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
 		ft_printf("test %i: ", test_number);
 		test_number++;
-						ft = ft_printf("% ++d\n", -42);
+		ft = ft_printf("{%05.*d}", -15, 42);
 		ft_putnbr(ft);
 		ft_putchar('\n');
 

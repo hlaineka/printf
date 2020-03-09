@@ -240,6 +240,20 @@ int		main(int argc, char **argv)
 		ft_putnbr(ft);
 		ft_putchar('\n');
 
+		//pf = printf("null %c and text\n", 0);
+		ft = ft_printf("{%0c}", 0);
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
+		//pf = printf("null %c and text\n", 0);
+		ft = ft_printf("{%*c}", 0, 0);
+		//ft_putnbr(pf);
+		//ft_putchar('\n');
+		ft_putnbr(ft);
+		ft_putchar('\n');
+
 		//printf("% c\n", 0);
 		//ft_printf("% c\n", 0);
 		//ft_putchar('\n');

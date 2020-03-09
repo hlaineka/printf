@@ -85,6 +85,10 @@ main_float: re
 	gcc main_floatft.c -o floatft libftprintf.a
 	gcc main_floatpf.c -o floatpf libftprintf.a
 	make clean
+	
+main_ansi: re
+	gcc main_ansi.c -o ansi libftprintf.a
+	make clean
 
 compare:
 	gcc compare.c -o compare libftprintf.a

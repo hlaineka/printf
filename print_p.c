@@ -51,7 +51,12 @@ static char	*pointer_precision(char *string, t_tags *command)
 
 	if (ft_strlen(string) < 14)
 	{	
-		if ((int)ft_strlen(string) < command->precision)
+		if (ft_strequ(string, "0x0") && command->precision == 0)
+		{
+			free(string);
+			return(ft_strdup("0x"));
+		}
+		else if ((int)ft_strlen(string) < command->precision)
 			returnable = ft_strset('0', command->precision);
 		else
 			returnable = ft_strset('0', ft_strlen(string));

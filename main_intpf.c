@@ -376,17 +376,17 @@ int		main(int argc, char **argv)
 		
 		printf("test %i: ", test_number);
 		test_number++;
-						pf = printf("% ++d\n", -42);
+		pf = printf("{%*3d}", 5, 0);
 		printf("%i\n", pf);
 
 		printf("test %i: ", test_number);
 		test_number++;
-				pf = printf("% ++d\n", -42);
+		pf = printf("{%*d}", -5, 42);
 		printf("%i\n", pf);
 		
 		printf("test %i: ", test_number);
 		test_number++;
-						pf = printf("% ++d\n", -42);
+		pf = printf("{%05.*d}", -15, 42);
 		printf("%i\n", pf);
 
 		printf("test %i: ", test_number);

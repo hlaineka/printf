@@ -96,3 +96,4 @@ test 48: test: 0000000052
 17
 test 49: 0X3E8\n7
 test 50: 1f9\n5
+test 51: 0013
