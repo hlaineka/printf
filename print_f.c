@@ -1,42 +1,6 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-char		*ft_itoa_float(long double n)
-{
-	char			*str1;
-	char			*str2;
-	char			*returnable;
-	long long int	number;
-	int				i;
-
-	number = n;
-	str1 = ft_itoa_base(number, 10, TRUE);
-	if (str1[0] == '0' && n < 0)
-		str1 = ft_strjoin_frees2("-", str1);
-	if (n < 0)
-	{
-		n = n * -1;
-		number = number * -1;
-	}
-	i = 1;
-	if (NULL != (str2 = ft_strnew(20)))
-	{
-		str2[0] = '.';
-		n = n - number;
-		while (i < 20)
-		{
-			n = n * 10;
-			number = n;
-			str2[i] = (number % 10) + '0';
-			i++;
-		}
-		returnable = ft_strjoin_frees2(str1, str2);
-		free(str1);
-		return(returnable);
-	}
-	return(NULL);
-}
-
 static char	*float_width(char *string, int width, t_tags *command)
 {
 	char	*returnable;
@@ -173,7 +137,7 @@ long double	read_float(t_tags *command, va_list *source)
 {
 	long double	returnable;
 	
-	if(command->length_L)
+	if(command->length_lll)
 		returnable = va_arg(*source, long double);
 	else
 		returnable = (long double)va_arg(*source, double);

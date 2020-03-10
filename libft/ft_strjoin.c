@@ -6,7 +6,7 @@
 /*   By: hlaineka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 14:15:51 by hlaineka          #+#    #+#             */
-/*   Updated: 2019/10/31 11:43:32 by hlaineka         ###   ########.fr       */
+/*   Updated: 2020/03/10 12:46:41 by hlaineka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 				i++;
 			}
 			while (s2[w] != '\0')
-			{	
-				returnable[i] = s2[w];
-				i++;
-				w++;
-			}
+				returnable[i++] = s2[w++];
 			returnable[i] = '\0';
 			return (returnable);
 		}

@@ -6,7 +6,7 @@
 /*   By: hlaineka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 12:23:22 by hlaineka          #+#    #+#             */
-/*   Updated: 2020/01/16 12:23:24 by hlaineka         ###   ########.fr       */
+/*   Updated: 2020/03/10 11:17:27 by hlaineka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdarg.h>
+# include <stdint.h>
 # include "libft/libft.h"
 
 /*
-** Text color definition
+** Text color definitions
 */
 # define BLACK				"\033[0;30m"
 # define RED 				"\033[0;31m"
@@ -41,7 +42,7 @@
 # define RESET				"\033[0m"
 
 /*
-** Backgroud colors
+** Backgroud color definitions
 */
 # define BG_BLACK 			"\033[40m"
 # define BG_RED				"\033[41m"
@@ -61,7 +62,7 @@
 # define BG_BRIGHT_WHITE	"\033[47;1m"
 
 /*
-** Decorations
+** Decorations definitions
 */
 # define BOLD				"\033[1m"
 # define UNDERLINE			"\033[4m"
@@ -88,27 +89,40 @@ typedef struct	s_tags
 	int			length_h;
 	int			length_l;
 	int			length_ll;
-	int			length_L;
+	int			length_lll;
 	int			empty;
 }				t_tags;
 
-int 		ft_printf(const char *format, ...);
+/*
+** The main function to handle printing
+*/
+
+int				ft_printf(const char *format, ...);
+
+/*
+** Helper functions to set command values
+*/
+void			initialize_command(t_tags *command);
+void			set_flag(t_tags *command, char flag);
+void			set_width(t_tags *command, char c, va_list *source);
+void			set_precision(t_tags *command, char c, va_list *source);
+void			set_length(t_tags *command, char c);
+
 /*
 ** The fuctions called by selector on ft_printf, main functions
 ** to handle different data types.
 */
-int			print_s(t_tags *command, va_list *source);
-int			print_c(t_tags *command, va_list *source);
-int			print_p(t_tags *command, va_list *source);
-int			print_d(t_tags *command, va_list *source);
-int			print_o(t_tags *command, va_list *source);
-int			print_u(t_tags *command, va_list *source);
-int			print_x(t_tags *command, va_list *source);
-int			print_f(t_tags *command, va_list *source);
+int				print_s(t_tags *command, va_list *source);
+int				print_c(t_tags *command, va_list *source);
+int				print_p(t_tags *command, va_list *source);
+int				print_d(t_tags *command, va_list *source);
+int				print_o(t_tags *command, va_list *source);
+int				print_u(t_tags *command, va_list *source);
+int				print_x(t_tags *command, va_list *source);
+int				print_f(t_tags *command, va_list *source);
 
 /*
 ** Helper functions for print_s
 */
-
 
 #endif

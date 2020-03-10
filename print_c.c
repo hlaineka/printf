@@ -17,11 +17,11 @@ static int	char_width(char printable, t_tags *command)
 	int		width;
 
 	width = command->width;
-	if(command->flag_minus)
+	if (command->flag_minus)
 	{
 		ft_putchar(printable);
 		width--;
-		while(width > 0)
+		while (width > 0)
 		{
 			ft_putchar(' ');
 			width--;
@@ -29,7 +29,7 @@ static int	char_width(char printable, t_tags *command)
 	}
 	else
 	{
-		while(width > 1)
+		while (width > 1)
 		{
 			ft_putchar(' ');
 			width--;
@@ -37,19 +37,19 @@ static int	char_width(char printable, t_tags *command)
 		ft_putchar(printable);
 	}
 	if (command->width == 0)
-		return(1);
+		return (1);
 	else
-		return(command->width);
+		return (command->width);
 }
 
 static int	char_editor(char printable, t_tags *command)
 {
 	if (command->width != -1)
-		return(char_width(printable, command));
+		return (char_width(printable, command));
 	else
 	{
 		ft_putchar(printable);
-		return(1);
+		return (1);
 	}
 }
 
@@ -65,5 +65,5 @@ int			print_c(t_tags *command, va_list *source)
 	else
 		aquired = (char)va_arg(*source, int);
 	returnable = char_editor(aquired, command);
-	return(returnable);
+	return (returnable);
 }

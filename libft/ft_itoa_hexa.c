@@ -1,47 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_uint.c                                     :+:      :+:    :+:   */
+/*   ft_itoa_hexa.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlaineka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/10 11:19:56 by hlaineka          #+#    #+#             */
-/*   Updated: 2020/03/10 11:22:36 by hlaineka         ###   ########.fr       */
+/*   Created: 2020/03/10 12:35:48 by hlaineka          #+#    #+#             */
+/*   Updated: 2020/03/10 12:36:59 by hlaineka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_define_uint_length(uintmax_t n, unsigned int base)
+static int		ft_define_hexa_length(uintmax_t n)
 {
-	int	i;
+	int			i;
+	uintmax_t	base;
 
-	i = 0;
+	i = 1;
+	base = 16;
 	while ((n / base) > 0)
 	{
 		i++;
 		n = n / base;
 	}
-	i++;
 	return (i);
 }
 
-char		*ft_itoa_uint(uintmax_t n, unsigned int base)
+char			*ft_itoa_hexa(uintmax_t n)
 {
 	static char		*str;
 	int				w;
+	uintmax_t		base;
 
-	if (NULL != (str = (char*)malloc(sizeof(char) *
-					(ft_define_uint_length(n, base) + 1))))
+	base = 16;
+	if (NULL != (str = (char*)malloc(sizeof(char)
+					* (ft_define_hexa_length(n) + 1))))
 	{
-		w = ft_define_uint_length(n, base) - 1;
+		w = ft_define_hexa_length(n) - 1;
 		str[w + 1] = ('\0');
 		while (n >= base)
 		{
-			str[w--] = ((n % base) + '0');
+			if (n % base <= 9)
+				str[w--] = ((n % base) + '0');
+			else
+				str[w--] = ((n % base) - 10 + 'a');
 			n = n / base;
 		}
-		str[w] = n + '0';
+		if (n <= 9)
+			str[w--] = n + '0';
+		else
+			str[w--] = n - 10 + 'a';
 		return (str);
 	}
 	return (NULL);

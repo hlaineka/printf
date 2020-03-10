@@ -13,7 +13,7 @@
 NAME = libftprintf.a
 
 SRCS = ft_printf.c print_s.c print_c.c print_p.c print_x.c print_d.c print_u.c print_o.c \
-print_f.c
+print_f.c set_command_values.c
 
 OBJ = $(SRCS:.c=.o)
 
@@ -36,7 +36,7 @@ libft/ft_lstiter.c libft/ft_lstmap.c libft/ft_strpaste.c libft/ft_strset.c \
 libft/ft_itoa_base.c libft/get_next_line.c libft/ft_itoa_uint.c\
 libft/ft_str_realloc.c libft/ft_dynamic_string.c libft/ft_strpaste_end.c\
 libft/ft_strjoin_frees2.c libft/ft_strpaste_digits.c libft/ft_char_str_join.c \
-libft/ft_strsub_freestr.c
+libft/ft_strsub_freestr.c libft/ft_itoa_hexa.c libft/ft_itoa_float.c
 
 LIBFT_OBJ = ft_itoa.o ft_putchar.o ft_putchar_fd.o ft_putendl.o ft_putendl_fd.o \
 ft_putnbr.o ft_putnbr_fd.o ft_putstr.o ft_putstr_fd.o ft_strcpy.o ft_strdup.o \
@@ -50,7 +50,8 @@ ft_define_length.o ft_strequ.o ft_strnequ.o ft_strsub.o ft_strjoin.o ft_strtrim.
 ft_strsplit.o ft_addstr.o ft_lstnew.o ft_lstdelone.o ft_lstdel.o ft_lstadd.o \
 ft_lstiter.o ft_lstmap.o ft_strpaste.o ft_strset.o ft_itoa_base.o ft_itoa_uint.o\
 get_next_line.o ft_str_realloc.o ft_dynamic_string.o ft_strjoin_frees2.o \
-ft_strpaste_digits.o ft_char_str_join.o ft_strsub_freestr.o ft_strpaste_end.o
+ft_strpaste_digits.o ft_char_str_join.o ft_strsub_freestr.o ft_strpaste_end.o \
+ft_itoa_hexa.o ft_itoa_float.o
 
 INC = ft_printf.h
 

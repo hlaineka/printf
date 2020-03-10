@@ -84,7 +84,7 @@ int			print_p(t_tags *command, va_list *source)
 	int		returnable;
 	
 	pointer = va_arg(*source, void*);
-	printable = ft_itoa_base((long long int)(pointer), 16, FALSE);
+	printable = ft_itoa_hexa((uintmax_t)(pointer));
 	printable = ft_strjoin_frees2("0x", printable);
 	printable = pointer_editor(printable, command);
 	ft_putstr(printable);

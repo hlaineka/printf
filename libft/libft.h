@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <stdint.h>
 # define T_INT_MAX 2147483647
 # define T_INT_MIN -2147483648
 # define BUFF_SIZE 8
@@ -107,12 +108,19 @@ int					ft_is_whitespace(const char c);
 char				*ft_str_realloc(char *src, int start, int end);
 char				*ft_strset(char value, size_t num);
 void				ft_strpaste(char *dest, char *src);
-int					ft_define_base_length(long long int n, int base);
-char				*ft_itoa_base(long long int n, long long int base, int signed);
 char				*ft_strjoin_frees2(char *s1, char *s2);
 void				ft_strpaste_digits(char *dest, char *src);
 char				*ft_char_str_join(char c, char *s1);
 char				*ft_strsub_freestr(char *s, unsigned int start, size_t len);
-char				*ft_itoa_uint(uintmax_t n, unsigned int	base);
 void				ft_strpaste_end(char *dest, char *src);
+
+/*
+** Different itoa functions to handle different data types
+*/
+int					ft_define_base_length(long long int n, int base);
+char				*ft_itoa_base(long long int n, long long int base);
+char				*ft_itoa_uint(uintmax_t n, unsigned int	base);
+char				*ft_itoa_hexa(uintmax_t n);
+char				*ft_itoa_float(long double n);
+
 #endif

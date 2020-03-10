@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlaineka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/10 11:22:52 by hlaineka          #+#    #+#             */
+/*   Updated: 2020/03/10 12:42:12 by hlaineka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /*
 ** turns intiger value to char, using the base given.
 */
 
-int	ft_define_base_length(long long int n, int base)
+int		ft_define_base_length(long long int n, int base)
 {
-	int i;
+	int				i;
 	long long int	int_min;
 
 	int_min = -9223372036854775807;
 	i = 1;
 	if (n < int_min)
-		return(20);
+		return (20);
 	if (n < 0)
 	{
 		i++;
@@ -26,33 +38,26 @@ int	ft_define_base_length(long long int n, int base)
 	return (i);
 }
 
-char		*ft_itoa_base(long long int n, long long int base, int sign)
+char	*ft_itoa_base(long long int n, long long int base)
 {
-	static char				*str;
-	int						w;
-	long long int		int_min;
+	static char	*str;
+	int			w;
 
-	int_min = -9223372036854775807;
 	w = ft_define_base_length(n, base) - 1;
-	if (n < int_min)
-			return(ft_strdup("-9223372036854775808"));
-	if (NULL != (str = (char*)malloc(sizeof(char) * (ft_define_base_length(n, base) + 1))))
+	if (n < -9223372036854775807)
+		return (ft_strdup("-9223372036854775808"));
+	if (NULL != (str = (char*)malloc(sizeof(char) *
+					(ft_define_base_length(n, base) + 1))))
 	{
 		str[w + 1] = ('\0');
-		if (sign)
+		if (n < 0)
 		{
-			if (n < 0)
-			{
-				str[0] = ('-');
-				n = n * (-1);
-			}
+			str[0] = ('-');
+			n = n * (-1);
 		}
 		while (n >= base)
 		{
-			if (n % base <= 9)
-				str[w--] = ((n % base) + '0');
-			else
-				str[w--] = ((n % base) - 10 + 'a');
+			str[w--] = ((n % base) + '0');
 			n = n / base;
 		}
 		str[w] = n + '0';

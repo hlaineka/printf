@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_char_str_join.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlaineka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/10 11:09:24 by hlaineka          #+#    #+#             */
+/*   Updated: 2020/03/10 11:11:55 by hlaineka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /*
-** Creates a new string where it combines the char and string given as parameters
-** Frees the string in s2.
+** Creates a new string where it combines the char and string given as
+** parameters. Frees the string in s2.
 */
 
 char	*ft_char_str_join(char c, char *s1)

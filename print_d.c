@@ -123,7 +123,7 @@ int			print_d(t_tags *command, va_list *source)
 	aquired = read_int(command, source);
 	if (aquired >= 0)
 		command->positive_value = TRUE;
-	printable = ft_itoa_base(aquired, 10, TRUE);
+	printable = ft_itoa_base(aquired, 10);
 	printable = int_editor(printable, command);
 	returnable = ft_strlen(printable);
 	ft_putstr(printable);

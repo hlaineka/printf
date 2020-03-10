@@ -21,14 +21,14 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		pf = printf("%%\n");
-		ft = ft_printf("%.0p, %.p", 0, 0);
+		ft = ft_printf("%9.2p", 1234);
 		ft_putchar('\n');
 		//ft_putnbr(pf);
 		//ft_putchar('\n');
 		ft_putnbr(ft);
 		ft_putchar('\n');
 		
-		pf = printf("%.0p, %.p", 0, 0);
+		pf = printf("%9.2p", 1234);
 		printf("\n");
 		//ft = ft_printf("%%\n");
 		printf("%i\n", pf);
