@@ -6,7 +6,7 @@
 /*   By: hlaineka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 12:23:48 by hlaineka          #+#    #+#             */
-/*   Updated: 2020/01/16 12:23:49 by hlaineka         ###   ########.fr       */
+/*   Updated: 2020/03/11 14:25:06 by hlaineka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ static int	char_width(char printable, t_tags *command)
 		}
 		ft_putchar(printable);
 	}
-	if (command->width == 0)
-		return (1);
-	else
-		return (command->width);
+	return (command->width == 0 ? 1 : command->width);
 }
 
 static int	char_editor(char printable, t_tags *command)
@@ -56,8 +53,8 @@ static int	char_editor(char printable, t_tags *command)
 int			print_c(t_tags *command, va_list *source)
 {
 	char	aquired;
-	int 	returnable;
-	
+	int		returnable;
+
 	aquired = '\0';
 	returnable = 0;
 	if (command->specifier == '%')

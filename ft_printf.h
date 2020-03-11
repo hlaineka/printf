@@ -122,7 +122,11 @@ int				print_x(t_tags *command, va_list *source);
 int				print_f(t_tags *command, va_list *source);
 
 /*
-** Helper functions for print_s
+** Helper functions
 */
+uintmax_t		read_octal(t_tags *command, va_list *source);
+long long int	read_int(t_tags *command, va_list *source);
+void			int_width_flag_zero(char *returnable, char *string,
+					t_tags *command);
 
 #endif
