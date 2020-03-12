@@ -6,10 +6,9 @@
 /*   By: hlaineka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 12:24:57 by hlaineka          #+#    #+#             */
-/*   Updated: 2020/01/16 12:25:00 by hlaineka         ###   ########.fr       */
+/*   Updated: 2020/03/12 10:32:29 by hlaineka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_printf.h"
 
@@ -21,35 +20,28 @@ static char	*uint_width(char *string, int width, t_tags *command)
 	i = 0;
 	if ((int)ft_strlen(string) < width)
 	{
-		if (command->flag_zero && !command->flag_minus && command->precision == -1)
+		if (command->flag_zero && !command->flag_minus
+				&& command->precision == -1)
 			returnable = ft_strset('0', width);
 		else
 			returnable = ft_strset(' ', width);
-		if(command->flag_minus)
+		if (command->flag_minus)
 			ft_strpaste(returnable, string);
 		else if (command->flag_zero)
-		{
-			ft_strpaste_digits(&returnable[width - ft_strlen(string)], string);
-			while (returnable[i] == ' ')
-					i++;
-			if (i > 0)
-				i--;
-			if (command->positive_value && command->flag_plus)
-				returnable[i] = '+';
-		}
+			uint_width_flag_zero(returnable, string, command);
 		else
 			ft_strpaste(&returnable[width - ft_strlen(string)], string);
 	}
 	else
 		returnable = ft_strdup(string);
 	free(string);
-	return(returnable);
+	return (returnable);
 }
 
 static char	*uint_precision(char *string, t_tags *command)
 {
 	char	*returnable;
-	 
+
 	if (ft_strequ(string, "0") && command->precision == 0)
 		returnable = ft_strnew(0);
 	else if (ft_strequ(string, "+0") && command->precision == 0)
@@ -57,18 +49,18 @@ static char	*uint_precision(char *string, t_tags *command)
 	else if ((int)ft_strlen(string) <= command->precision)
 	{
 		returnable = ft_strset('0', command->precision);
-		ft_strpaste_digits(&returnable[ft_strlen(returnable) - ft_strlen(string)], string);
+		ft_strpaste_digits(&returnable[ft_strlen(returnable)
+				- ft_strlen(string)], string);
 		if (!ft_isdigit(string[0]))
 			returnable = ft_char_str_join(string[0], returnable);
 	}
 	else
 		returnable = ft_strdup(string);
 	free(string);
-	return(returnable);
-	
+	return (returnable);
 }
 
-static char *uint_editor(char *printable, t_tags *command, int original)
+static char	*uint_editor(char *printable, t_tags *command, int original)
 {
 	if (command->flag_plus && original >= 0)
 		printable = ft_strjoin_frees2("+", printable);
@@ -76,21 +68,21 @@ static char *uint_editor(char *printable, t_tags *command, int original)
 		printable = uint_precision(printable, command);
 	if (command->width != -1)
 		printable = uint_width(printable, command->width, command);
-	return(printable);
+	return (printable);
 }
 
 uintmax_t	read_uint(t_tags *command, va_list *source)
 {
-	if(command->length_hh)
-		return(unsigned char)va_arg(*source, uintmax_t);
-	else if(command->length_h)
-		return(unsigned short int)va_arg(*source, uintmax_t);
-	else if(command->length_l)
-		return(unsigned long int)va_arg(*source, uintmax_t);
-	else if(command->length_ll)
-		return(unsigned long long int)va_arg(*source, uintmax_t);
+	if (command->length_hh)
+		return (unsigned char)va_arg(*source, uintmax_t);
+	else if (command->length_h)
+		return (unsigned short int)va_arg(*source, uintmax_t);
+	else if (command->length_l)
+		return (unsigned long int)va_arg(*source, uintmax_t);
+	else if (command->length_ll)
+		return (unsigned long long int)va_arg(*source, uintmax_t);
 	else
-		return(unsigned int)va_arg(*source, uintmax_t);
+		return (unsigned int)va_arg(*source, uintmax_t);
 }
 
 int			print_u(t_tags *command, va_list *source)
@@ -105,5 +97,5 @@ int			print_u(t_tags *command, va_list *source)
 	ft_putstr(printable);
 	returnable = ft_strlen(printable);
 	free(printable);
-	return(returnable);
+	return (returnable);
 }

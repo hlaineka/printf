@@ -13,7 +13,8 @@
 NAME = libftprintf.a
 
 SRCS = ft_printf.c print_s.c print_c.c print_p.c print_x.c print_d.c print_u.c print_o.c \
-print_f.c set_command_values.c va_arg_reader_functions.c helper_functions.c
+print_f.c set_command_values.c va_arg_reader_functions.c helper_functions.c \
+float_trim_and_round.c
 
 OBJ = $(SRCS:.c=.o)
 

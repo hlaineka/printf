@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <stdarg.h>
 # include <stdint.h>
+# include <stdio.h>
 # include "libft/libft.h"
 
 /*
@@ -102,11 +103,11 @@ int				ft_printf(const char *format, ...);
 /*
 ** Helper functions to set command values
 */
-void			initialize_command(t_tags *command);
 void			set_flag(t_tags *command, char flag);
 void			set_width(t_tags *command, char c, va_list *source);
 void			set_precision(t_tags *command, char c, va_list *source);
 void			set_length(t_tags *command, char c);
+void			set_wildcard_precision(t_tags *command, va_list *source);
 
 /*
 ** The fuctions called by selector on ft_printf, main functions
@@ -126,7 +127,17 @@ int				print_f(t_tags *command, va_list *source);
 */
 uintmax_t		read_octal(t_tags *command, va_list *source);
 long long int	read_int(t_tags *command, va_list *source);
+long double		read_float(t_tags *command, va_list *source);
+uintmax_t		read_hexa(t_tags *command, va_list *source);
 void			int_width_flag_zero(char *returnable, char *string,
 					t_tags *command);
+void			float_width_flag_zero(char *returnable, char *string,
+					t_tags *command);
+void			uint_width_flag_zero(char *returnable, char *string,
+					t_tags *command);
+char			*ft_trim(char *str, t_tags *command);
+long double		ft_round(long double number, t_tags *command);
+char			*hexa_upperalpha(char *string);
+int				is_specifier(char c);
 
 #endif

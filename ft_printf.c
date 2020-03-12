@@ -6,7 +6,7 @@
 /*   By: hlaineka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 12:23:03 by hlaineka          #+#    #+#             */
-/*   Updated: 2020/01/16 12:23:10 by hlaineka         ###   ########.fr       */
+/*   Updated: 2020/03/12 12:19:55 by hlaineka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,26 @@ static int	selector(t_tags *command, va_list *source)
 	return (0);
 }
 
-static int	is_specifier(char c)
+static void	initialize_command(t_tags *command)
 {
-	if (c == 's' || c == 'c' || c == 'p' || c == 'd'
-	|| c == 'i' || c == 'o' || c == 'u' || c == 'x'
-	|| c == 'X' || c == '%' || c == 'f')
-		return (TRUE);
-	return (FALSE);
+	command->specifier = '\0';
+	command->positive_value = FALSE;
+	command->flag_zero = FALSE;
+	command->flag_minus = FALSE;
+	command->flag_plus = FALSE;
+	command->flag_space = FALSE;
+	command->flag_hash = FALSE;
+	command->width = -1;
+	command->width_address = FALSE;
+	command->precision = -1;
+	command->precision_address = FALSE;
+	command->length = -1;
+	command->length_hh = FALSE;
+	command->length_h = FALSE;
+	command->length_l = FALSE;
+	command->length_ll = FALSE;
+	command->length_lll = FALSE;
+	command->empty = FALSE;
 }
 
 static int	check_command(const char *format, t_tags *command, va_list *source)
@@ -74,6 +87,12 @@ static int	check_command(const char *format, t_tags *command, va_list *source)
 	return (w);
 }
 
+static int	printer(char c, int printed)
+{
+	ft_putchar(c);
+	return (printed + 1);
+}
+
 int			ft_printf(const char *format, ...)
 {
 	va_list source;
@@ -90,17 +109,13 @@ int			ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			initialize_command(command);
-			i = i + check_command(&format[i], command, &source);
+			i = i + check_command(&format[i], command, &source) + 1;
 			if (command->empty)
 				break ;
 			printed = printed + selector(command, &source);
 		}
 		else
-		{
-			ft_putchar(format[i]);
-			printed++;
-		}
-		i++;
+			printed = printer(format[i++], printed);
 	}
 	free(command);
 	va_end(source);
