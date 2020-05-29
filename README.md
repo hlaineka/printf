@@ -1,4 +1,11 @@
 # printf
+
+```
+int				ft_printf(const char *format, ...);
+```
+
+[Subject for this project](ft_printf.en.pdf)
+
 My implementation of the libc printf-function.
 
 Functions used in this project were malloc, free, write and stdarg functions. All other functions written by me.
